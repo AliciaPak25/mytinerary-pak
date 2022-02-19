@@ -1,6 +1,6 @@
 const data = {
     "title": "Popular MYtineraries",
-    "cities": [
+    "cities": [ 
     {
         "id": 1,
         "image": "tokyo.jpg",
@@ -41,8 +41,8 @@ const data = {
         "image": "palermo.jpg",
         "name": "Palermo"
     },
-
-]
+  
+    ]
 }
 
-export default data;
+export default data

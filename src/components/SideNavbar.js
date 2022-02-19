@@ -108,7 +108,7 @@ export default function SideNavbar() {
         </Button>
       </Box>
 
-      <List dense={true}>
+      <List dense={true} sx={{backgroundColor: "chocolate"}}>
         {navbarList.map((key, index) => (
           <>
             {index === 0 ? (
