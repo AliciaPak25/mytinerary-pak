@@ -11,6 +11,8 @@ import BrightnessLowIcon from "@mui/icons-material/BrightnessLow";
 
 import Slider from "./components/SliderSmallThumb";
 import Carrousel from "./components/carrousel"
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 function valuetext(value) {
   

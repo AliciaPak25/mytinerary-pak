@@ -86,7 +86,7 @@ export default function SideNavbar() {
             paddingBottom: '3px',
           }}
         >
-          MuiMakeStyles
+          My Tinerary
         </Typography>
 
         <Button
@@ -108,7 +108,7 @@ export default function SideNavbar() {
         </Button>
       </Box>
 
-      <List dense={true} sx={{backgroundColor: "chocolate"}}>
+      <List dense={true} /* sx={{backgroundColor: "chocolate"}} */>
         {navbarList.map((key, index) => (
           <>
             {index === 0 ? (
@@ -136,6 +136,7 @@ export default function SideNavbar() {
                       backgroundColor: '#26284687',
                     }}
                   >
+                    
                     <ListItemIcon sx={{ minWidth: '46px' }}>
                       <Badge
                         badgeContent={key.badge}
@@ -144,7 +145,7 @@ export default function SideNavbar() {
                       >
                         <key.icon
                           sx={{ fontSize: '20px', color: 'lightgray' }}
-                        />
+                        /> 
                       </Badge>
                     </ListItemIcon>
 
@@ -195,9 +196,11 @@ export default function SideNavbar() {
                     borderRadius: '8px',
                     '&:hover': {
                       backgroundColor: '#26284687',
+                     
                     },
                   }}
-                >
+                > 
+                
                   <ListItemIcon sx={{ minWidth: '46px' }}>
                     <Badge
                       badgeContent={key.badge}
@@ -260,6 +263,7 @@ export default function SideNavbar() {
             alignContent: 'center',
           }}
         >
+          
           <StyledAvatar />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
@@ -275,7 +279,7 @@ export default function SideNavbar() {
               color: 'lightgray',
             }}
           >
-            Arrofi Reza S.
+            User
           </Typography>
           <Typography
             component="span"
@@ -287,7 +291,7 @@ export default function SideNavbar() {
               color: 'lightgray',
             }}
           >
-            Web Designer
+            
           </Typography>
         </Box>
         <IconButton contained sx={{ color: 'lightGray' }}>

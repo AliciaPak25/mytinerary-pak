@@ -16,19 +16,19 @@ const navbarList = [
   },
   {
     icon: DashboardOutlined,
-    desc: 'Dashboard',
+    desc: 'Home',
     secondDesc: '',
     badge: 0,
     subList: [],
   },
   {
     icon: Person,
-    desc: 'User',
+    desc: 'Log In',
     secondDesc: '',
     badge: 0,
     subList: [],
   },
-  {
+ /*  {
     icon: Forum,
     desc: 'Forum',
     secondDesc: 'Message from andi',
@@ -43,15 +43,15 @@ const navbarList = [
         badge: 0,
       },
     ],
-  },
+  }, */
   {
     icon: Analytics,
-    desc: 'Analytics',
+    desc: 'Cities',
     secondDesc: '',
     badge: 0,
     subList: [],
   },
-  {
+/*   {
     icon: FolderOpen,
     desc: 'Folder',
     secondDesc: '',
@@ -64,7 +64,7 @@ const navbarList = [
     secondDesc: '',
     badge: 0,
     subList: [],
-  },
+  }, */
 ];
 
 export default navbarList;

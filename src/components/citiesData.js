@@ -41,7 +41,26 @@ const data = /* {
         "image": "palermo.jpg",
         "name": "Palermo"
     },
-  
+    {
+        "id": 8,
+        "image": "palermo.jpg",
+        "name": "Palermo"
+    },
+    {
+        "id": 8,
+        "image": "palermo.jpg",
+        "name": "Palermo"
+    },
+    {
+        "id": 8,
+        "image": "palermo.jpg",
+        "name": "Palermo"
+    },
+    {
+        "id": 8,
+        "image": "palermo.jpg",
+        "name": "Palermo"
+    },
     ]
 /* } */
 

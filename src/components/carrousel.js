@@ -1,39 +1,122 @@
- import React, { useRef, useState }  from "react"; 
 import data from "./citiesData"
 import "../styles/stylesCarrousel.css";
- 
+
+
+
+import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/grid";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+
+
 // import required modules
-import { Grid, Pagination } from "swiper"; 
+import { Autoplay, Pagination  } from "swiper";
 
+export default function App() {
+  return (
+    <>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        slidesPerGroup={4}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false}}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
+      >
+        {data.map(city=>
+        <SwiperSlide>
+          <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} width={400}/>
+          </SwiperSlide>   
+        )}
+      </Swiper>
+    </>
+  );
+}
 /* import React, { Component } from "react";
-import Slider from "react-slick"; */
+import Slider from "react-slick";
 
+export default class Carrousel extends Component {
+  render() {
+    const settings = {
+      className: "center",
+      infinite: true,
+      centerPadding: "60px",
+      slidesToShow: 4,
+      swipeToSlide: true,
+      afterChange: function(index) {
+        console.log(
+          `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+        );
+      }
+    };
+    return (
+      <div>
+        {data.map(city=>
+        <Slider {...settings}>
+          <div>
+          <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} width={400}/>
+          </div>    
+        </Slider>
+        )}
+      </div>
+    );
+  }
+}
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import required modules
+/* import { Grid, Pagination, Autoplay, Navigation } from "swiper";
 
 export default function Carrousel() {
   return (
     <>
       <Swiper
-       slidesPerView={2}
-       grid={{
-         rows: 2
-       }}
-       slidesPerGroup={4}
-       spaceBetween={30}
-       pagination={{
-         clickable: true
-       }}
-       modules={[Grid, Pagination]}
-       className="mySwiper"
+        slidesPerView={2}
+        grid={{
+          rows: 2
+        }}
+        slidesPerGroup={2}
+        spaceBetween={30}
+        pagination={{
+          clickable: true
+        }}
+        hashNavigation={{
+          watchState: true
+        }}
+        navigation={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false
+        }}
+        modules={[Grid, Pagination, Autoplay, Navigation]}
+        className="mySwiper"
       >
-          {data.map(city=>
+        {data.map(city=>
         <SwiperSlide>
             <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} width={400}/>
          </SwiperSlide>
@@ -41,7 +124,10 @@ export default function Carrousel() {
       </Swiper>
     </>
   );
-} 
+} */
+
+          
+     
 
 
 /* export default class SwipeToSlide extends Component {
