@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import SideNavbar from "./components/SideNavbar";
 
 ReactDOM.render(
   <React.StrictMode>
+    
     <App />
+    <SideNavbar />
   </React.StrictMode>,
   document.getElementById('root')
 );
