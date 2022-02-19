@@ -10,6 +10,7 @@ import Brightness2Icon from "@mui/icons-material/Brightness2";
 import BrightnessLowIcon from "@mui/icons-material/BrightnessLow";
 
 import Slider from "./components/SliderSmallThumb";
+import Carrousel from "./components/carrousel"
 
 function valuetext(value) {
   
@@ -49,6 +50,7 @@ function App() {
           Learn React
         </a>
       </header> */}
+      <Carrousel/>
       <Box p={"20px"} sx={{ border: "1px solid gray" }}>
       <Stack
         direction="row"

@@ -1,6 +1,6 @@
-const data = {
+const data = /* {
     "title": "Popular MYtineraries",
-    "cities": [ 
+    "cities": */ [ 
     {
         "id": 1,
         "image": "tokyo.jpg",
@@ -43,6 +43,6 @@ const data = {
     },
   
     ]
-}
+/* } */
 
 export default data
