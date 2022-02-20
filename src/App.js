@@ -13,6 +13,8 @@ import Slider from "./components/SliderSmallThumb";
 import Carrousel from "./components/carrousel"
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Hero from "./components/Hero"
+import CallToAction from './components/CallToAction';
 
 function valuetext(value) {
   
@@ -52,6 +54,8 @@ function App() {
           Learn React
         </a>
       </header> */}
+      <Hero/>
+      <CallToAction/>
       <Carrousel/>
       <Box p={"20px"} sx={{ border: "1px solid gray" }}>
       <Stack

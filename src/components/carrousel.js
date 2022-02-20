@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay, Pagination  } from "swiper";
+import { height } from "@mui/system";
 
 export default function App() {
   return (
@@ -34,8 +35,8 @@ export default function App() {
         className="mySwiper"
       >
         {data.map(city=>
-        <SwiperSlide>
-          <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} width={400}/>
+        <SwiperSlide sx={{height: 10}}/* className="imageCarrousel" */>
+          <img src={process.env.PUBLIC_URL+`/assets/${city.image}`}  />
           </SwiperSlide>   
         )}
       </Swiper>

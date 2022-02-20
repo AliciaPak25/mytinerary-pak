@@ -1,0 +1,15 @@
+.divCall{
+    display: flex;
+    justify-content: center;
+    background-image: url(../beach.jfif);
+    background-position: 45% 60%;
+    background-size: cover;
+    width: 100%;
+  padding: 3em;
+    border: 3px solid rgb(44, 43, 43);
+}
+.imgCall{
+    width: 10em;
+    border-radius: 5em;
+    border: 1px solid aquamarine;
+}

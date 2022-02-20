@@ -17,13 +17,17 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
+import '../styles/logo.css'
+import user from '../defaultuser.png'
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-import Logo from './Logo.js';
+/* import Logo from './Logo.js'; */
 import navbarList from './navList';
 import StyledAvatar from './StyledAvatar';
+import logo from '../image.svg';
+import logodos from '../logo-white.png';
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -70,7 +74,9 @@ export default function SideNavbar() {
             marginBottom: '9px',
           }}
         >
-          <Logo />
+          <div className='divLogo'>
+          <img src={logo} alt='logo' width={60} className='imgLogo'/>
+          </div>
         </Box>
         <Typography
           variant="h1"
@@ -263,8 +269,8 @@ export default function SideNavbar() {
             alignContent: 'center',
           }}
         >
-          
-          <StyledAvatar />
+          <img src={user} alt='user' width={35} className='imgUser'/>
+          {/* <StyledAvatar /> */}
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <Typography
