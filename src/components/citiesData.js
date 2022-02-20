@@ -1,5 +1,4 @@
 const data = /* {
-    "title": "Popular MYtineraries",
     "cities": */ [ 
     {
         "id": 1,

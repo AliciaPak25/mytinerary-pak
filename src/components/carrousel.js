@@ -34,9 +34,15 @@ export default function App() {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
+        <h1>Popular MYtineraries</h1>
         {data.map(city=>
         <SwiperSlide sx={{height: 10}}/* className="imageCarrousel" */>
-          <img src={process.env.PUBLIC_URL+`/assets/${city.image}`}  />
+          <div class="card bg-dark text-white">
+            <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img" alt="cities"/>
+              <div class="card-img-overlay">
+                <h5 class="card-title">{city.name}</h5>
+              </div>
+          </div>
           </SwiperSlide>   
         )}
       </Swiper>
