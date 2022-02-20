@@ -44,13 +44,7 @@ const navbarList = [
       },
     ],
   }, */
-  {
-    icon: Analytics,
-    desc: 'Cities',
-    secondDesc: '',
-    badge: 0,
-    subList: [],
-  },
+  
 /*   {
     icon: FolderOpen,
     desc: 'Folder',
@@ -68,3 +62,4 @@ const navbarList = [
 ];
 
 export default navbarList;
+

@@ -19,12 +19,14 @@ import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import '../styles/logo.css'
 import user from '../defaultuser.png'
+import {Link} from "react-router-dom";
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 /* import Logo from './Logo.js'; */
 import navbarList from './navList';
+import navbarCities from './navCities';
 import StyledAvatar from './StyledAvatar';
 import logo from '../image.svg';
 import logodos from '../logo-white.png';
@@ -132,7 +134,9 @@ export default function SideNavbar() {
                       },
                     },
                   }}
+                 
                 >
+                  
                   <ListItemButton
                     onClick={toogleOpenSearch}
                     sx={{
@@ -240,12 +244,62 @@ export default function SideNavbar() {
                     />
                   ) : (
                     <></>
-                  )}
-                </ListItemButton>
-              </Tooltip>
+                  )} 
+                  
+                </ListItemButton> 
+               
+                  {/* )} */}
+                </Tooltip>
             )}
           </>
+
         ))}
+
+        {navbarCities.map((key) => (
+          <>
+           <ListItemButton
+                  sx={{
+                    margin: '6px 14px',
+                    padding: '10px',
+                    borderRadius: '8px',
+                    '&:hover': {
+                      backgroundColor: '#26284687',
+                     
+                    },
+                  }}
+                  
+                > 
+                
+                  <ListItemIcon sx={{ minWidth: '46px' }}>
+                    <Badge
+                      badgeContent={key.badge}
+                      color="secondary"
+                      variant="dot"
+                    >
+                      <key.icon sx={{ fontSize: '20px', color: 'lightgray' }} />
+                    </Badge>
+                  </ListItemIcon>
+
+                  <ListItemText
+                    primary={key.desc}
+                    primaryTypographyProps={{
+                      variant: 'body2',
+                    }}
+                    sx={{
+                      display: 'inline',
+                      margin: '0px',
+                      overflowX: 'hidden',
+                      color: 'lightgray',
+                      whiteSpace: 'nowrap',
+                      minWidth: '126px',
+                    }}
+                  />
+                 
+                  
+                </ListItemButton> 
+               
+                 </>
+                 ))}
         <Divider variant="middle" light={true} />
       </List>
 
