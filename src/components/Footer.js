@@ -7,7 +7,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Office from '../traveloffice.jpg';
 import "../styles/stylesFooter.css"
 
 export default function Footer(){

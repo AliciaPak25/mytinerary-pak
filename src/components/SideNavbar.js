@@ -15,7 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
+
 import IconButton from '@mui/material/IconButton';
 import '../styles/logo.css'
 import user from '../defaultuser.png'
@@ -24,12 +24,10 @@ import {Link as LinkRouter} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-/* import Logo from './Logo.js'; */
 import navbarList from './navList';
 import navbarCities from './navCities';
-import StyledAvatar from './StyledAvatar';
 import logo from '../image.svg';
-import logodos from '../logo-white.png';
+
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -116,7 +114,7 @@ export default function SideNavbar() {
         </Button>
       </Box>
 
-      <List dense={true} /* sx={{backgroundColor: "chocolate"}} */>
+      <List dense={true}>
         {navbarList.map((key, index) => (
           <>
             {index === 0 ? (
@@ -332,7 +330,6 @@ export default function SideNavbar() {
           }}
         >
           <img src={user} alt='user' width={35} className='imgUser'/>
-          {/* <StyledAvatar /> */}
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <Typography
@@ -366,13 +363,14 @@ export default function SideNavbar() {
           <ExitToAppIcon />
         </IconButton>
       </Box>
+
     </>
   );
 
   return (
-    <Box sx={{ display: 'flex', backgroundColor: "#11101D" }}>
+    <Box sx={{ display: 'flex', backgroundColor: "#11101D"}}>
       <Drawer
-        variant="permanent"
+        variant= "permanent"
         open={open}
         sx={{
           width: open
