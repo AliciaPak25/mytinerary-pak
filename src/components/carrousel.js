@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 
 
 // import required modules
-import { Autoplay, Pagination  } from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import { height } from "@mui/system";
 
 export default function App() {
@@ -31,7 +31,9 @@ export default function App() {
         autoplay={{
           delay: 2500,
           disableOnInteraction: false}}
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination, Autoplay, Navigation]}
+        navigation={{
+          clickable: true,}} 
         className="mySwiper"
       >
         <h1>Popular MYtineraries</h1>

@@ -2,12 +2,16 @@ import './App.css';
 import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import Carrousel from "./components/carrousel"
+
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Hero from "./components/Hero"
-import CallToAction from './components/CallToAction';
+
+
 import Header from './components/header';
+import SideNavbar from "./components/SideNavbar";
+import Cities from './components/cities';
+import Home from './components/Home';
+import Footer from './components/Footer';
 
 function App() {
   
@@ -28,12 +32,12 @@ function App() {
         </a>
       </header> */}
       <BrowserRouter>
-    
-      <Hero/>
-      <CallToAction/>
-      <Carrousel/>
-      
-    
+        <Routes>
+          <Route path='*' element={<Home/>}/> 
+         <Route path='/cities' element={<Cities/>}/>
+        </Routes>
+      <SideNavbar />
+      <Footer />
     </BrowserRouter>
     </div>
   );

@@ -19,7 +19,7 @@ import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import '../styles/logo.css'
 import user from '../defaultuser.png'
-import {Link} from "react-router-dom";
+import {Link as LinkRouter} from "react-router-dom";
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -199,6 +199,7 @@ export default function SideNavbar() {
                   },
                 }}
               >
+                <LinkRouter to={"*"}>
                 <ListItemButton
                   sx={{
                     margin: '6px 14px',
@@ -235,20 +236,11 @@ export default function SideNavbar() {
                       minWidth: '126px',
                     }}
                   />
-                  {key.badge !== 0 ? (
-                    <Chip
-                      label={key.badge}
-                      color={'secondary'}
-                      size="small"
-                      sx={{ height: 'auto' }}
-                    />
-                  ) : (
-                    <></>
-                  )} 
+                  
                   
                 </ListItemButton> 
-               
-                  {/* )} */}
+                </LinkRouter>
+                 
                 </Tooltip>
             )}
           </>
@@ -257,6 +249,21 @@ export default function SideNavbar() {
 
         {navbarCities.map((key) => (
           <>
+           <Tooltip
+                title={open ? key.desc : ''}
+                placement={'right'}
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      backgroundColor: 'gray',
+                      color: 'white',
+                      marginLeft: '22px !important',
+                      boxShadow: '0px 0px 22px -2px rgba(0,0,0,0.20)',
+                    },
+                  },
+                }}
+              >
+          <LinkRouter to={"/cities"}>
            <ListItemButton
                   sx={{
                     margin: '6px 14px',
@@ -297,7 +304,8 @@ export default function SideNavbar() {
                  
                   
                 </ListItemButton> 
-               
+                </LinkRouter>
+                </Tooltip>
                  </>
                  ))}
         <Divider variant="middle" light={true} />
@@ -406,12 +414,7 @@ export default function SideNavbar() {
         }}
       >
         <Typography>
-          Lorem ipsum sir dolor Ullamco veniam consequat mollit cupidatat
-          voluptate sint voluptate enim laborum Lorem sint dolore. Sit sit aute
-          nulla aute dolore duis in sit qui in exercitation cupidatat ea dolore.
-          Culpa sunt pariatur officia cupidatat tempor consectetur ea commodo
-          excepteur veniam tempor. Consectetur duis veniam eiusmod id ipsum
-          velit irure. Sint sint ipsum esse occaecat. officia.
+          MyTinerary
         </Typography>
         <Switch
           checked={open}

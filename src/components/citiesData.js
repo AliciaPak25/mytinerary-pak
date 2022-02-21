@@ -41,24 +41,24 @@ const data = /* {
         "name": "Palermo"
     },
     {
-        "id": 8,
-        "image": "palermo.jpg",
-        "name": "Palermo"
+        "id": 9,
+        "image": "marsella.jpg",
+        "name": "Marseille"
     },
     {
-        "id": 8,
-        "image": "palermo.jpg",
-        "name": "Palermo"
+        "id": 10,
+        "image": "manilla.jpg",
+        "name": "Manila"
     },
     {
-        "id": 8,
-        "image": "palermo.jpg",
-        "name": "Palermo"
+        "id": 11,
+        "image": "pamplonados.jpg",
+        "name": "Pamplona"
     },
     {
-        "id": 8,
-        "image": "palermo.jpg",
-        "name": "Palermo"
+        "id": 12,
+        "image": "berlin.jpg",
+        "name": "Berlin"
     },
     ]
 /* } */
