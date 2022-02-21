@@ -1,0 +1,33 @@
+.imgFooter{
+    width:4em;
+}
+.gridFather{
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+.boxLogo{
+    display: flex;
+}
+.dFlexColumn{
+    display: flex;
+    flex-direction: column;
+}
+.containerCentered{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.principalContainer{
+    width: 100%;
+}
+.dFlex{
+    display: flex;
+}
+.link{
+    text-decoration: none;
+    color: white;
+}
+p{
+    margin: 0;
+}

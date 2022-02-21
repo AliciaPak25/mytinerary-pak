@@ -20,7 +20,8 @@ import { height } from "@mui/system";
 
 export default function App() {
   return (
-    <>
+    <div className='divCarrousel'>
+      <h1>Popular MYtineraries</h1>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -36,11 +37,10 @@ export default function App() {
           clickable: true,}} 
         className="mySwiper"
       >
-        <h1>Popular MYtineraries</h1>
         {data.map(city=>
         <SwiperSlide sx={{height: 10}}/* className="imageCarrousel" */>
           <div class="card bg-dark text-white">
-            <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img" alt="cities"/>
+            <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img imageCarrousel" alt="cities"/>
               <div class="card-img-overlay">
                 <h5 class="card-title">{city.name}</h5>
               </div>
@@ -48,7 +48,7 @@ export default function App() {
           </SwiperSlide>   
         )}
       </Swiper>
-    </>
+    </div>
   );
 }
 /* import React, { Component } from "react";

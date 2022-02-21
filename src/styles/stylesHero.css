@@ -1,12 +1,23 @@
+.hero{
+    width: 100%;
+    object-fit: cover;
+}
 .textHero{
-    position: absolute;
-    top: 10%;
-    left: 10%;
-   /*  background-color: chocolate; */
-    /* border-radius: 1em;
-    border: 1px solid aquamarine; */
+    display: flex;
+    justify-content: center;
+   
 }
 .imageHero{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid rgb(44, 43, 43);
+}
+.containerSlogan{
+    position: absolute;
+    top: 1%;
+    left: 15%;
+}
+h2{
+    margin: 0;
 }

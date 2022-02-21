@@ -1,22 +1,6 @@
-/* #app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
- */
 .swiper {
-  width: 100%;
-  height: 5% !important;
+  width: 80%;
+  height: 100% !important;
   margin-left: auto;
   margin-right: auto;
 }
@@ -24,9 +8,9 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  /* height: calc((100% - 30px) / 2) !important; */
-
+  background: rgba(144, 246, 250, 0.5);
+  height: calc((100% - 30px) / 2);
+ border-radius: 1em;
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,8 +25,17 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
-.imageCarrousel img{
-  height: 50% !important;
+.imageCarrousel{
+  height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 1em 1em 0 0 !important;
+}
+.divCarrousel{
+  background-image: url(../backgroundbutton.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
 }

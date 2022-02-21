@@ -199,7 +199,7 @@ export default function SideNavbar() {
                   },
                 }}
               >
-                <LinkRouter to={"*"}>
+                <LinkRouter to={"*"} className='notUnderlined'>
                 <ListItemButton
                   sx={{
                     margin: '6px 14px',
@@ -263,7 +263,7 @@ export default function SideNavbar() {
                   },
                 }}
               >
-          <LinkRouter to={"/cities"}>
+          <LinkRouter to={"/cities"} className='notUnderlined'>
            <ListItemButton
                   sx={{
                     margin: '6px 14px',
@@ -370,7 +370,7 @@ export default function SideNavbar() {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor: "#11101D" }}>
       <Drawer
         variant="permanent"
         open={open}

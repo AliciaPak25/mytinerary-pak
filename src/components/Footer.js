@@ -8,52 +8,63 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Office from '../traveloffice.jpg';
+import "../styles/stylesFooter.css"
 
 export default function Footer(){
     return (
-        <footer>
+        <footer className='principalContainer'>
             <Box sx={{backgroundColor: "#11101D", color: "white"}}>
                 <Container maxWidth="lg">
-                    <Grid container spacing={5}>
-                        <Grid item xs={12} sm={4}>
-                            <Box>
-                                <img src={process.env.PUBLIC_URL+`/assets/aviation-logo.svg`} width={300}/>
+                    <Grid container spacing={5} className="containerCentered">
+                        <Grid item xs={12} sm={4} className='gridFather'>
+                            <Box className='boxLogo'>
                                 <h3>MyTinerary</h3>
                             </Box>
+                            <Container className='dFlexColum'>
                             <Box borderBottom={1}>
                                 Navigation
                             </Box>
                             <Box>
-                                <LinkRouter to={"*"}>
+                                <LinkRouter to={"*"} className='link'>
                                     Home
                                 </LinkRouter>
                             </Box>
                             <Box>
-                                <LinkRouter to={"/cities"}>
+                                <LinkRouter to={"/cities"} className='link'>
                                     Cities
                                 </LinkRouter>
                             </Box>
+                            </Container>
+                            <Container className='dFlexColum'>
                             <Box borderBottom={1}>
                                 Contact
                             </Box>
-                            <Box>
+                           
+                            <Box className='dFlexColum'>
+                            <div className='dFlex'>
                                <FacebookIcon/>
-                               Facebook
+                               <p>Facebook</p>
+                            </div>
+                            <div className='dFlex'>
                                <InstagramIcon/>
-                               Instagram
+                               <p>Instagram</p>
+                            </div>
+                            <div className='dFlex'>
                                <WhatsAppIcon/>
-                               Whatsapp
+                               <p>Whatsapp</p>
+                               </div>
                             </Box>
+                            </Container>
+                            <Container className='dFlexColum'>
                             <Box borderBottom={1}>
                                 Address
                             </Box>
-                            <Box>
+                            <Box className='dFlex' width={200}>
                                 <LocationOnIcon/>
-                                1100 New York Ave NW Suite 450, Washington, DC 20005, United States
+                                <p>New York, United States</p>
+                                
                             </Box>
-                            <Box>
-                                <img src={Office}/>
-                            </Box>
+                            </Container>
                         </Grid>
                     </Grid>
                 </Container>
