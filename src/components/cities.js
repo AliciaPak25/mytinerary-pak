@@ -1,10 +1,15 @@
 import React from 'react';
+import Cards from './CardsCities';
+import CustomizedInputBase from './Input';
+import HeroCity from './HeroCities';
+
 
 const Cities = () => {
-
     return (
         <>
-        <h1>Under Construction</h1>
+        <HeroCity/>
+        <CustomizedInputBase/>
+        <Cards/>
         </>
     );
 }

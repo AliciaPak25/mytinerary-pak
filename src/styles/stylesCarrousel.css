@@ -47,15 +47,15 @@
   .divResponsive{
     min-width: 100%;
     max-width: 100%;
-    position: relative;
-    left: 4vw;
-    display: -webkit-flex;
+    /* position: relative;
+    left: 4vw; */
+   /*  display: -webkit-flex; */
     display: flex;
-    -webkit-flex-wrap: wrap;
+    /* -webkit-flex-wrap: wrap; */
     flex-wrap: wrap;
-    -webkit-justify-content: center;
+    /* -webkit-justify-content: center; */
     justify-content: center;
-    -webkit-align-items: center;
+    /* -webkit-align-items: center; */
     align-items: center;
   }
 }
