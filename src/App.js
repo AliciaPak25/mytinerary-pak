@@ -8,16 +8,17 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 
 
+
 function App() {
-  
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<Home/>}/> 
-         <Route path='/cities' element={<Cities/>}/>
+        <Route path='/cities' element={<Cities/>}/>
         </Routes>
-        <SideNavbar />
+       {/*  <SideNavbar /> */}
       {/* <Footer /> */}
     </BrowserRouter>
     </div>
