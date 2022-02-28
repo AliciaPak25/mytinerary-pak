@@ -18,7 +18,7 @@ function App() {
           <Route path='*' element={<Home/>}/> 
         <Route path='/cities' element={<Cities/>}/>
         </Routes>
-       {/*  <SideNavbar /> */}
+       <SideNavbar /> 
       {/* <Footer /> */}
     </BrowserRouter>
     </div>
