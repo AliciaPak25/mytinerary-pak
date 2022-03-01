@@ -6,6 +6,7 @@ import SideNavbar from "./components/SideNavbar";
 import Cities from './components/cities';
 import Home from './components/Home';
 import Footer from './components/Footer';
+import ActionAreaCard from './components/UnderConstruction'
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='*' element={<Home/>}/> 
         <Route path='/cities' element={<Cities/>}/>
+        <Route path='/UnderConstruction/:id' element={<ActionAreaCard/>}/>
         </Routes>
        <SideNavbar /> 
       {/* <Footer /> */}

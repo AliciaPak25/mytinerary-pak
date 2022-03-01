@@ -20,43 +20,54 @@ const citiesController = {
     },
     addACity: async (req, res)=>{
         console.log(req.body)
-        const {name, image, country, description} = req.body.dataInput 
-        new Cities({name: name,
-                    image: image,
-                    country: country,
-                    description: description}).save()
-            .then((answer) => res.json({answer}))
+        const {name, image, country, description} = req.body
+        new CitiesControl({name,
+                    image,
+                    country,
+                    description}).save()
+            .then((response) => res.json({success: true, response: response}))
+            .catch((error)=> res.json({success: false, response: error}))
     },
     deleteACity: async (req,res)=>{
         const id = req.params.id
+        let city 
         
-        await Cities.findOneAndDelete({_id:id})
+        try{
+           city = await CitiesControl.findOneAndDelete({_id:id})
+        }
+        catch(error){
+            console.log(error)
+        }
+        res.json({success: true, alicia: "ciudad borrada", response: city})
     },
     modifyACity: async (req, res)=>{
         const id = req.params.id
-        const city = req.body.dataInput
+        const city = req.body
+        let citydb
 
-        let citydb = await Cities.findOneAndUpdate({_id:id}, city)
+        try{
+            citydb = await CitiesControl.findOneAndUpdate({_id:id}, city, {new: true})
+        }catch(error){
+            console.log(error)
+        }
+        res.json({success: true, response: citydb})
+
+        
         console.log(citydb)
     },
     getASpecificCityByItsId: async (req, res)=>{
-        let id = "621be57736989724fa521837"
-        error = null
+    
         let specificId;
-
+        let id = req.params.id
         try{
-            specificId = await Cities.findById(id)
+            specificId = await CitiesControl.findOne({_id:id})
         }catch(err){
-            error = err
-            console.log(error);
+            console.log(err);
         }
         res.json({
-            response: error ? 'ERROR' : {id},
-            success: error ? false : true,
-            error: error
+            success: true, response: specificId
         })
-      
+    
     }
-}
-
+} 
 module.exports = citiesController

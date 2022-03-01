@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
-import Cards from './CardsCities';
-import CustomizedInputBase from './Input';
 import HeroCity from './HeroCities';
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import "../styles/cities.css"
+import {Link as LinkRouter} from 'react-router-dom';
 
 const Cities = () => {
 
@@ -33,9 +31,7 @@ const Cities = () => {
         if (searchResults !== undefined){
             setData(searchResults)
         }
-       /*  else{
-            setData(cities)
-        }  */
+    
     },[searchResults])
 
     const handleChange = event => {
@@ -48,14 +44,6 @@ const Cities = () => {
             (element.name.toLowerCase().startsWith(search.toLowerCase().trim()))
         ))
     }
-
-  /*   const nothing = () => {
-        setNothing(cities.filter(()=>
-        if(searchResults !== element.name){
-
-        }
-        ))
-    } */
 
     return (
         <>
@@ -70,11 +58,11 @@ const Cities = () => {
         >
             <TextField fullWidth label="Search" id="fullWidth" />
         </Box>
+
         </div>
-        {/* <Cards/> */}
         <div className='containerCard'>
-       { !isLoaded ? (<h2>Loading..</h2>) :
-       data.length === 0 ? (<h2>no hay nada</h2>) :
+       { !isLoaded ? (<h2>Loading...</h2>) :
+       data.length === 0 ? (<h2>Nothing found</h2>) :
         data?.map(city=>
             <div class="card bg-dark text-white divCard">
                 <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img" alt="cardCity"/>
@@ -82,9 +70,10 @@ const Cities = () => {
                     <h5 class="card-title">{city.name}</h5>
                     <p class="card-text">{city.country}</p>
                     <p class="card-text">{city.description}</p>
+                    <LinkRouter to={`/UnderConstruction/${city._id}`}> <button type="button" class="btn btn-outline-info">See more</button> </LinkRouter>
                 </div>
             </div> 
-        )
+        ) 
 } 
         </div> 
         </>
@@ -92,3 +81,4 @@ const Cities = () => {
 }
 
 export default Cities;
+
