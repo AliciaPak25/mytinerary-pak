@@ -1,6 +1,12 @@
 .divCard{
     width: 40vw;
     margin-bottom: 1em;
+    border: 1px solid hsl(216, 50%, 16%);
+}
+.divCard:hover{
+    box-shadow: 0px 0px 15px 15px hsl(216, 50%, 16%);
+    -webkit-box-shadow: 0px 0px 15px 15px hsl(216, 50%, 16%);
+    
 }
 .containerCard{
     display: flex;
@@ -13,4 +19,51 @@
     display: flex;
     justify-content: center;
     margin: 2em;
+}
+.CardSearchNotFound{
+    margin-bottom: 3em;
+}
+@media (max-width: 350){
+    .CardSearchNotFound{
+        width: 10em;
+    }
+}
+.divContentTextCard{
+    display: flex;
+    justify-content: center;
+    height: 20%;
+}
+.cityName{
+    font-size: 2rem;
+    background-color: rgba(62, 192, 192, 0.171);
+    border-radius: 1em;
+}
+.divCountry{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.cityCountry{
+    font-size: 1.5rem;
+    border: 1px solid hsl(216, 50%, 16%);
+    background-color: rgba(62, 192, 192, 0.171);
+    width: 100%;
+    text-align: center;
+}
+@media (max-width: 700px){
+    .cityCountry{
+        font-size: 1rem;
+    }
+    .cityName{
+        font-size: 1rem;
+    }
+    .containerCard{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .divCard{
+        width: 60vw;
+    }
 }

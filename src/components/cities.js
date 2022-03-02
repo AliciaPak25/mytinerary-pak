@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import "../styles/cities.css"
 import {Link as LinkRouter} from 'react-router-dom';
+import ActionAreaCard from './NoResultFound';
+import CircularIndeterminate from './Loading'
 
 const Cities = () => {
 
@@ -61,18 +63,20 @@ const Cities = () => {
 
         </div>
         <div className='containerCard'>
-       { !isLoaded ? (<h2>Loading...</h2>) :
-       data.length === 0 ? (<h2>Nothing found</h2>) :
+       { !isLoaded ? (<CircularIndeterminate/>) :
+       data.length === 0 ? (<ActionAreaCard/>) :
         data?.map(city=>
+            <LinkRouter to={`/UnderConstruction/${city._id}`}>
             <div class="card bg-dark text-white divCard">
                 <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img" alt="cardCity"/>
-                <div class="card-img-overlay">
-                    <h5 class="card-title">{city.name}</h5>
-                    <p class="card-text">{city.country}</p>
-                    <p class="card-text">{city.description}</p>
-                    <LinkRouter to={`/UnderConstruction/${city._id}`}> <button type="button" class="btn btn-outline-info">See more</button> </LinkRouter>
+                <div class="card-img-overlay divContentTextCard">
+                    <h5 class="card-title cityName">{city.name}</h5>
                 </div>
-            </div> 
+                <div class="card-img-overlay divCountry">
+                    <h5 class="card-title cityCountry">{city.country}</h5>
+                </div>
+            </div>
+            </LinkRouter> 
         ) 
 } 
         </div> 
@@ -82,3 +86,5 @@ const Cities = () => {
 
 export default Cities;
 
+{/*    <p class="card-text">{city.country}</p>
+                    <p class="card-text">{city.description}</p> */}
