@@ -31,3 +31,10 @@
 p{
     margin: 0;
 }
+footer{
+    text-align: center;
+    /* margin-top: auto; */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

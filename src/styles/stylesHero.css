@@ -5,11 +5,11 @@
 .textHero{
     display: flex;
     justify-content: center;
-   
+
 }
 .imageHero{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
     border-bottom: 2px solid rgb(44, 43, 43);
 }
@@ -20,4 +20,23 @@
 }
 h2{
     margin: 0;
+}
+.HeroCities{
+    width: 100%;
+    height: 100vh;
+}
+.HeroUnderConstruction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+    background-image: url(../heroUnderConstruction.jpg);
+    background-size: cover;
+    background-position: 50% 60%;
+}
+@media (max-width: 700px){
+    .comingSoon{
+        max-width: 100%;
+    }
 }
