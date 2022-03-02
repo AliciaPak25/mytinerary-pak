@@ -1,4 +1,37 @@
 .divDetail{
     display: flex;
+    flex-direction: column;
+}
+.divCardDetail{
+    display: flex;
     justify-content: center;
+    margin-top: 3em;
+}
+.CardActionArea{
+    display: flex;
+    border: none;
+
+}
+
+.CardContent{
+    border: 1px solid hsl(216, 50%, 16%);
+    background-color: #416388;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+}
+
+.buttonDetail{
+    display: flex;
+    justify-content: center;
+    margin: 3em;
+}
+@media (max-width: 1000px){
+    .Card{
+     
+       width: 80%;
+    }
+    body{
+        width: 100%
+    }
 }

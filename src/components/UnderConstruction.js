@@ -9,6 +9,9 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useParams} from 'react-router-dom'
 import "../styles/stylesUnderConstruction.css"
+import HeroUC from './HeroUnderConstruction'
+import {Link as LinkRouter} from 'react-router-dom';
+
 
 export default function ActionAreaCard() {
     const [cities, setCities] = useState([]);
@@ -31,30 +34,34 @@ export default function ActionAreaCard() {
 
   return (
       <div className='divDetail'>
-    <Card sx={{ maxWidth: 345 }}>
+        <HeroUC/>
+      <div className='divCardDetail'>
+    <Card sx={{ maxWidth: 1000}} className='Card'>
         {card?.map(city=>
-      <CardActionArea>
+      <CardActionArea className='CardActionArea'>
         <CardMedia
           component="img"
-          height="140"
+          height="400"
           image={process.env.PUBLIC_URL+`/assets/${city.image}`}
-          alt="green iguana"
+          alt="card-Detail"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+         <CardContent className='CardContent'>
+          <Typography gutterBottom variant="h5" component="div" fontSize={30}>
           {city.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="white" fontSize={20}>
            Under Construction
           </Typography>
         </CardContent>
       </CardActionArea>
         )}
     </Card>
+    </div>
 
-    <Stack spacing={2} direction="row">
-    <Button variant="contained">Back to Home</Button>
+    <Stack spacing={2} direction="row" className='buttonDetail'>
+    <LinkRouter to={`/home`}><Button variant="contained">Back to Home</Button></LinkRouter>
     </Stack>
+    
     </div>
   );
 }

@@ -403,7 +403,7 @@ export default function SideNavbar() {
       >
         {drawerContent}
       </Drawer>
-      <Box
+     {/*  <Box
         component="main"
         sx={{
           backgroundColor: 'lightblue',
@@ -420,7 +420,7 @@ export default function SideNavbar() {
         >
           switch
         </Switch>
-      </Box>
+      </Box> */}
     </Box>
   );
 }
