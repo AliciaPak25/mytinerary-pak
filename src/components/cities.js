@@ -85,6 +85,3 @@ const Cities = () => {
 }
 
 export default Cities;
-
-{/*    <p class="card-text">{city.country}</p>
-                    <p class="card-text">{city.description}</p> */}

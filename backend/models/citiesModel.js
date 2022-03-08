@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); //mongoose es un contructor, construye un modelo de conexion con la base de datos
+const mongoose = require('mongoose'); 
 
 const citiesSchema = new mongoose.Schema({
     name: {type: String, required: true},
@@ -6,7 +6,7 @@ const citiesSchema = new mongoose.Schema({
     country: {type: String, required: true},
     description: {type: String, required: true},
 });
-//establecemos la coleccion y los datos
+
 const CitiesModel = mongoose.model('cities', citiesSchema);
 
 module.exports = CitiesModel;

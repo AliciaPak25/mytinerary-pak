@@ -40,3 +40,15 @@ h2{
         max-width: 100%;
     }
 }
+@media (max-width: 400px){
+    .imageHero{
+        visibility: hidden;
+    }
+    .hero{
+        background-image: url(../heroUnderConstruction.jpg);
+        background-size: cover;
+    }
+    .textHero{
+        visibility: hidden;
+    }
+}

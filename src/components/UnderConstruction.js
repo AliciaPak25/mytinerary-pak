@@ -12,8 +12,11 @@ import "../styles/stylesUnderConstruction.css"
 import HeroUC from './HeroUnderConstruction'
 import {Link as LinkRouter} from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
-export default function ActionAreaCard() {
+
+function ActionAreaCard() {
     const [cities, setCities] = useState([]);
 
     const getApi = async () =>{
@@ -66,4 +69,16 @@ export default function ActionAreaCard() {
   );
 }
 
+const mapDispatchToProps = {
+
+}
+
+const mapStateToProps = (state) => {
+  return {
+    itineraries: state.itinerariesReducer.itineraries,
+    comments: state.itinerariesReducer.comments
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActionAreaCard);
 
