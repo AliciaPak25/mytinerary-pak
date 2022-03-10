@@ -9,9 +9,9 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useParams} from 'react-router-dom'
 import "../styles/stylesUnderConstruction.css"
-import HeroUC from './HeroUnderConstruction'
+import HeroUC from '../components/HeroUnderConstruction'
 import {Link as LinkRouter} from 'react-router-dom';
-import CardItinerary from './Itineraries';
+import CardItinerary from '../components/Itineraries';
 
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';

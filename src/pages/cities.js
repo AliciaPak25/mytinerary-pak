@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
-import HeroCity from './HeroCities';
+import HeroCity from '../components/HeroCities';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import "../styles/cities.css"
 import {Link as LinkRouter} from 'react-router-dom';
-import ActionAreaCard from './NoResultFound';
-import CircularIndeterminate from './Loading';
+import ActionAreaCard from '../components/NoResultFound';
+import CircularIndeterminate from '../components/Loading';
 import {connect} from 'react-redux';
 import citiesAction from '../redux/actions/citiesActions';
 
@@ -18,33 +18,11 @@ console.log(props)
     const [data, setData] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
 
-
-   /*  const getApi = async () =>{
-        await axios.get(`http://localhost:4000/api/cities`)
-        .then(response=>{setCities(response.data.response.cities);
-            setData(response.data.response.cities);
-            setIsLoaded(true)
-        }).catch(error=>{console.log(error);})
-    }  */
-
     useEffect(()=>{
         props.fetchCities()
     },[]);
     console.log(props.cities);
 
-/*  useEffect(()=>{
-        if (search === " "){
-            setCities(props.cities)
-        }else{
-            setCities(props.filteredCities)
-        }
-    },[search]); */
-/*   useEffect(()=>{
-        if (searchResults !== undefined){
-            setData(searchResults)
-        }
-    
-    },[searchResults]) */
 
     const handleChange = (event) => {
         setSearch(event.target.value);
@@ -52,11 +30,6 @@ console.log(props)
         console.log(event.target.value)
     }
 
-   /*  const filtrate=(search)=>{
-        setSearchResults(cities.filter((element)=>
-            (element.name.toLowerCase().startsWith(search.toLowerCase().trim()))
-        ))
-    }  */
 
     return (
         <>
