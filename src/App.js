@@ -2,10 +2,10 @@ import './App.css';
 import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import ResponsiveAppBar from "./components/SideNavbar";
-import Cities from './components/cities';
-import Home from './components/Home';
+import Cities from './pages/cities';
+import Home from './pages/Home';
 import Footer from './components/Footer';
-import CardDetails from './components/UnderConstruction'
+import CardDetails from './pages/UnderConstruction'
 
 
 
