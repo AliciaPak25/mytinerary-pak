@@ -33,12 +33,12 @@ const citiesController = {
         let city 
         
         try{
-           city = await CitiesControl.findOneAndDelete({_id:id})
+        city = await CitiesControl.findOneAndDelete({_id:id})
         }
         catch(error){
             console.log(error)
         }
-        res.json({success: true, alicia: "ciudad borrada", response: city})
+        res.json({success: true, city: "city deleted", response: city})
     },
     modifyACity: async (req, res)=>{
         const id = req.params.id

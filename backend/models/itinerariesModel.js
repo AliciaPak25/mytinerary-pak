@@ -9,10 +9,9 @@ const itinerarySchema = new mongoose.Schema({
     hashtag1: {type: String, required: true},
     hashtag2: {type: String, required: true},
     hashtag3: {type: String, required: true},
-    hashtag4: {type: String, required: true},
-    buttonMore: {type: String, required: true},
-    buttonLess: {type: String, required: true},
-    comments: {type: String, required: true}
+    hashtag4: {type: String, required: false},
+    comments: {type: String, required: true},
+    city: {type: mongoose.Types.ObjectId, ref: 'cities', required: true}
 });
 
 const ItineraryModel = mongoose.model('itineraries', itinerarySchema);

@@ -3,11 +3,14 @@
 }
 .gridFather{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 0;
+    flex-direction: column !important;
+    align-items: center;
 }
 .boxLogo{
     display: flex;
+    justify-content: center;
 }
 .dFlexColumn{
     display: flex;
@@ -17,9 +20,10 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    
 }
 .principalContainer{
-    width: 100%;
+    max-width: 100%;
 }
 .dFlex{
     display: flex;
@@ -33,8 +37,9 @@ p{
 }
 footer{
     text-align: center;
-    /* margin-top: auto; */
+    margin-top: auto;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+     /* position: absolute;
+     bottom: 0; */
+     margin-bottom: -30px;
 }
