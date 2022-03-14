@@ -42,7 +42,7 @@ console.log(props)
         }}
         onChange={handleChange}
         >
-            <TextField fullWidth label="Search" id="fullWidth" />
+            <TextField fullWidth label="Choose your Destination" id="fullWidth" />
         </Box>
 
         </div>

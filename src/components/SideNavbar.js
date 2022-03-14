@@ -49,7 +49,7 @@ const settings = ['Sign In', 'Sign Up'];
             User
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><LinkRouter to={"/signUp"} className="dropdown-item">Sign Up</LinkRouter></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li>
                 <hr class="dropdown-divider"></hr>

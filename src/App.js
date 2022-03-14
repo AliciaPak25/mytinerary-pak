@@ -6,7 +6,7 @@ import Cities from './pages/cities';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import CardDetails from './pages/UnderConstruction'
-
+import SignUp from './components/SignUp/signUp';
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/cities' element={<Cities/>}/>
         <Route path='/UnderConstruction/:id' element={<CardDetails/>}/>
+        <Route path='/signUp'element={<SignUp/>}/>
         </Routes>
       <Footer /> 
     </BrowserRouter>
