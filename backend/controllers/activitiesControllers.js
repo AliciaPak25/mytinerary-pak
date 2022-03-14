@@ -1,66 +1,63 @@
-const CitiesControl = require('../models/citiesModel')
+/* const ActivitiesControl = require('../models/activitiesModel')
 
-const citiesController = {
+const activitiesController = {
 
-    obtainCities: async (req, res)=>{
-        let cities
+    obtainActivities: async (req, res)=>{
+        let activities
         let error = null
 
         try{
-            cities = await CitiesControl.find()
+            activities = await ActivitiesControl.find()
         }catch(err){
             error = err
             console.log(error);
         }
         res.json({
-            response: error ? 'ERROR' : {cities},
+            response: error ? 'ERROR' : {activities},
             success: error ? false : true,
             error: error
         })
     },
-    addACity: async (req, res)=>{
-        console.log(req.body)
+    addAnActivity: async (req, res)=>{
         const {name, image, country, description} = req.body
-        new CitiesControl({name,
+        new ActivitiesControl({name,
                     image,
                     country,
                     description}).save()
             .then((response) => res.json({success: true, response: response}))
             .catch((error)=> res.json({success: false, response: error}))
     },
-    deleteACity: async (req,res)=>{
+    deleteAnActivity: async (req,res)=>{
         const id = req.params.id
-        let city 
+        let activity 
         
         try{
-        city = await CitiesControl.findOneAndDelete({_id:id})
+        city = await ActivitiesControl.findOneAndDelete({_id:id})
         }
         catch(error){
             console.log(error)
         }
-        res.json({success: true, city: "city deleted", response: city})
+        res.json({success: true, activities: "activity deleted", response: activity})
     },
-    modifyACity: async (req, res)=>{
+    modifyAnActivity: async (req, res)=>{
         const id = req.params.id
-        const city = req.body
-        let citydb
+        const activity = req.body
+        let activitydb
 
         try{
-            citydb = await CitiesControl.findOneAndUpdate({_id:id}, city, {new: true})
+            activitydb = await ActivitiesControl.findOneAndUpdate({_id:id}, activity, {new: true})
         }catch(error){
             console.log(error)
         }
-        res.json({success: true, response: citydb})
+        res.json({success: true, response: activitydb})
 
-        
-        console.log(citydb)
     },
-    getASpecificCityByItsId: async (req, res)=>{
+    getAnSpecificActivityByItsId: async (req, res)=>{
     
         let specificId;
         let id = req.params.id
         try{
-            specificId = await CitiesControl.findOne({_id:id})
+            specificId = await ActivitiesControl.findOne({_id:id})
         }catch(err){
             console.log(err);
         }
@@ -70,4 +67,4 @@ const citiesController = {
     
     }
 } 
-module.exports = citiesController
+module.exports = activitiesController */

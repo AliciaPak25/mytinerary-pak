@@ -33,11 +33,11 @@ export default function App() {
         className="mySwiper"
       >
         {data.map(city=>
-        <SwiperSlide sx={{height: 10}} className="divResponsive">
-          <div class="card bg-dark text-white">
-            <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} class="card-img imageCarrousel" alt="cities"/>
-              <div class="card-img-overlay">
-                <h5 class="card-title">{city.name}</h5>
+        <SwiperSlide sx={{height: 10}} className="divResponsive" key={city.name}>
+          <div className="card bg-dark text-white">
+            <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} className="card-img imageCarrousel" alt="cities"/>
+              <div className="card-img-overlay">
+                <h5 className="card-title">{city.name}</h5>
               </div>
           </div>
           </SwiperSlide>   

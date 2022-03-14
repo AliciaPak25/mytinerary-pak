@@ -1,0 +1,20 @@
+.principalNav{
+    background-color: transparent !important;
+    position: absolute;
+}
+.hamburguerButton{
+    background-color: #11101D !important;
+    display: flex;
+    align-items: center;
+}
+.hamburguerButton:hover{
+    border: 2px solid lightgray !important;
+    border-radius: 1em;
+}
+.hamburguerIcon{
+    filter: invert(1);
+}
+.menuP{
+    color: lightgray;
+    margin-right: 1em;
+}

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sign Up */
+
+.divContainerSignUp{
+    background-image: url(./backgroundSignUp.jpg);
+    height: 600px !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background:  300px 300px;
+    /* background-position: 30% 75%; */
+    /* overflow: hidden; */
+}
+
+.inputsSU{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.registerContainer{
+    background-color: white;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import Hero from "./Hero"
-import CallToAction from './CallToAction';
-import Carrousel from "./carrousel"
+import Hero from "../components/Hero"
+import CallToAction from '../components/CallToAction';
+import Carrousel from "../components/carrousel"
 
 const Home = () => {
 

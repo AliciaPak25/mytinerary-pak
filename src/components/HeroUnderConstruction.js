@@ -10,7 +10,7 @@ const HeroUC = () => {
         <Grid container spacing={3}>
         <Grid item xs={12}>
             <div className='HeroUnderConstruction'>
-            <h1 className='comingSoon'> Coming Soon... </h1>
+            <h1 className='comingSoon'> </h1>
             </div>
         </Grid>
         </Grid>

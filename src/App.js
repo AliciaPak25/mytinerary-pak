@@ -1,12 +1,12 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import SideNavbar from "./components/SideNavbar";
-import Cities from './components/cities';
-import Home from './components/Home';
+import ResponsiveAppBar from "./components/SideNavbar";
+import Cities from './pages/cities';
+import Home from './pages/Home';
 import Footer from './components/Footer';
-import CardDetails from './components/UnderConstruction'
-
+import CardDetails from './pages/UnderConstruction'
+import SignUp from './components/SignUp/signUp';
 
 
 function App() {
@@ -14,13 +14,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <ResponsiveAppBar /> 
         <Routes>
         <Route path='*' element={<Home/>}/> 
         <Route path='/home' element={<Home/>}/>
         <Route path='/cities' element={<Cities/>}/>
         <Route path='/UnderConstruction/:id' element={<CardDetails/>}/>
+        <Route path='/signUp'element={<SignUp/>}/>
         </Routes>
-      <SideNavbar /> 
       <Footer /> 
     </BrowserRouter>
     </div>
