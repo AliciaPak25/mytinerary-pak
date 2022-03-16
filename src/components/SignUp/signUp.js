@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './stylesSign.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -22,6 +22,7 @@ import {Link as LinkRouter} from 'react-router-dom';
 import { Menu } from '@mui/material';
 
 const SignUp = (props) => {
+  console.log(props)
 const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
     const [values, setValues] = React.useState({
         amount: '',
@@ -55,7 +56,7 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
     const handleSubmit = (event) => {
       event.preventDefault()
       console.log(event.target);
-      const userData ={
+      const newUser ={
         firstName: event.target[0].value, 
         lastName: event.target[1].value,
         email: event.target[2].value,
@@ -64,9 +65,11 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
         country: event.target[5].value,
         from: "form-SignUp"
       }
-      props.signUpUser(userData)
+      props.signUpUser(newUser)
+      
     }
-
+    console.log(props.message)
+    alert(props.message.message)
     return (
         <div className='divContainerSignUp'>
             <div className='imgSignUp'>
@@ -140,7 +143,7 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
             </button>
             <p>or</p>
             <p>Sign up with Google</p>
-            <div>Already have an account? <LinkRouter to="/">Log in here</LinkRouter></div>
+            <div>Already have an account? <LinkRouter to="/login">Log in here</LinkRouter></div>
             
             </form>
             </div>
@@ -153,10 +156,11 @@ const mapDispatchToProps = {
   signUpUser: userActions.signUpUser,
 }
 
-/* const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
-    countriesApi: state.countriesDataReducer.countriesApi,
-    filterCountriesApi: state.countriesDataReducer.filterCountriesApi,
+    message: state.userReducer.message,
+    /* countriesApi: state.countriesDataReducer.countriesApi,
+    filterCountriesApi: state.countriesDataReducer.filterCountriesApi, */
   }
-} */
-export default connect(/* mapStateToProps */ null, mapDispatchToProps)(SignUp);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

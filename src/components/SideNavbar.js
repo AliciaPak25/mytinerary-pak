@@ -49,8 +49,8 @@ const settings = ['Sign In', 'Sign Up'];
             User
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              <li><LinkRouter to={"/signUp"} className="dropdown-item">Sign Up</LinkRouter></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><LinkRouter to={"/signup"} className="dropdown-item">Sign Up</LinkRouter></li>
+              <li><LinkRouter to={"/login"} className="dropdown-item">Log In</LinkRouter></li>
               <li>
                 <hr class="dropdown-divider"></hr>
               </li>
@@ -58,6 +58,7 @@ const settings = ['Sign In', 'Sign Up'];
             </ul>
           </li>
         </ul>
+        {}
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn btn-outline-success" type="submit">Search</button>
@@ -68,5 +69,13 @@ const settings = ['Sign In', 'Sign Up'];
 </nav>
     );
 }
+/* const mapStateToProps = (state) => {
+  return {
+      user: state.userReducer.user,
+  }
+}
+const mapDispatchToProps = {
+  userLogOut: userActions.userLogOut,
 
+} */
 export default ResponsiveAppBar;
