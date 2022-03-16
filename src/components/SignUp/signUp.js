@@ -12,10 +12,17 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-    
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import photoForm from './imagesSign/placeSign.jpg';
 
-const SignUp = () => {
+import { connect } from 'react-redux';
+import userActions from '../../redux/actions/userActions';
+import {Link as LinkRouter} from 'react-router-dom';
+import { Menu } from '@mui/material';
 
+const SignUp = (props) => {
+const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -38,13 +45,39 @@ const SignUp = () => {
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
+//select
+    const [age, setAge] = React.useState('');
+
+    const handleChange2 = (event) => {
+      setAge(event.target.value);
+    };
+//submit
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      console.log(event.target);
+      const userData ={
+        firstName: event.target[0].value, 
+        lastName: event.target[1].value,
+        email: event.target[2].value,
+        password: event.target[3].value,
+        photoURL: "https://cinefiloserial.com.ar/wp-content/uploads/2018/05/DW7r_ahV4AQ_DlO.jpg", 
+        country: event.target[5].value,
+        from: "form-SignUp"
+      }
+      props.signUpUser(userData)
+    }
 
     return (
-         <div className='divContainerSignUp'>
-            <form>
-                <fieldset className='registerContainer'>
+        <div className='divContainerSignUp'>
+            <div className='imgSignUp'>
+                    <img src={photoForm} className='photoSU' alt='beautiful-place'/>
+            </div>
+            <div className='registerContainer'>
                 <h1>Create a new account</h1>
                 <p>Want to sign up? Fill out this form!</p>
+            <form className='formContainer registerContainer' onSubmit={handleSubmit}>
+            
+                
     <Box
       component="form"
       sx={{
@@ -53,12 +86,11 @@ const SignUp = () => {
       noValidate
       autoComplete="on"
       className='inputsSU'
-    >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="standard-basic" label="Standard" variant="standard" />
-    </Box>
-    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+    > 
+      <TextField id="outlined-basic" label="First Name" variant="outlined" />
+      <TextField id="outlined-name" label="Last Name" />
+      <TextField id="outlined-textarea" label="Email Address" placeholder="example@email.com" multiline />
+      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -79,20 +111,52 @@ const SignUp = () => {
             }
             label="Password"
           />
-           <TextField
-          id="outlined-textarea"
-          label="Multiline Placeholder"
-          placeholder="Placeholder"
-          multiline
-        />
         </FormControl>
-        
 
-
-                </fieldset>
+      <TextField id="filled-textarea" label="Photo URL" placeholder="URL Profile Picture" multiline />
+      
+        <FormControl sx={{ m: 1, minWidth: 100 }}>
+        <InputLabel id="demo-simple-select-autowidth-label">Country</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={age}
+          onChange={handleChange2}
+          autoWidth
+          label="Country"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {countries.map(country=>
+            <MenuItem value={country}>{country}</MenuItem>
+            )}
+        </Select>
+      </FormControl>
+      </Box>
+            <button type='submit'>
+              <span>Sign Up</span>
+              <div class="liquid"></div>
+            </button>
+            <p>or</p>
+            <p>Sign up with Google</p>
+            <div>Already have an account? <LinkRouter to="/">Log in here</LinkRouter></div>
+            
             </form>
-        </div>
+            </div>
+            </div>
+        
     );
 }
 
-export default SignUp;
+const mapDispatchToProps = {
+  signUpUser: userActions.signUpUser,
+}
+
+/* const mapStateToProps = (state) => {
+  return {
+    countriesApi: state.countriesDataReducer.countriesApi,
+    filterCountriesApi: state.countriesDataReducer.filterCountriesApi,
+  }
+} */
+export default connect(/* mapStateToProps */ null, mapDispatchToProps)(SignUp);

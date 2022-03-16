@@ -7,23 +7,126 @@
 /* Sign Up */
 
 .divContainerSignUp{
-    background-image: url(./backgroundSignUp.jpg);
-    height: 600px !important;
+    background-image: url(./imagesSign/backgroundSignUp.jpg);
+    height: 100vh !important;
     width: 100% !important;
     display: flex;
-    flex-direction: column;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background:  300px 300px;
+    /* flex-direction: column; */
+    background-size: cover !important;
+    /* background-repeat: no-repeat !important; */
     /* background-position: 30% 75%; */
     /* overflow: hidden; */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .inputsSU{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .registerContainer{
-    background-color: white;
+    background-color: white !important;
+    width: 60%;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+}
+.imgSignUp{
+    z-index: 1;
+}
+.photoSU{
+    border-radius: 1em;
+    height: 65vh;
+    margin-left: 70%;
+    margin-top: 30%;
+}
+.contentFormSU{
+     text-align: right;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+/* button */
+/* From cssbuttons.io by @westitan */
+button {
+    position: relative;
+    padding: 19px 36px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 40px;
+    border: none;
+   }
+   
+   button span {
+    position: relative;
+    color: #fff;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+   }
+   
+   button .liquid {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #49c5ff;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+   }
+   
+   button .liquid::after,
+   button .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #fff;
+   }
+   
+   button .liquid::before {
+    border-radius: 45%;
+    background: rgb(22, 56, 121);
+    animation: animate 5s linear infinite;
+   }
+   
+   button .liquid::after {
+    border-radius: 40%;
+    background: rgba(30, 79, 184, 0.5);
+    animation: animate 10s linear infinite;
+   }
+   
+   button:hover .liquid {
+    top: -120px;
+   }
+   
+   @keyframes animate {
+    0% {
+     transform: translate(-50%, -75%) rotate(0deg);
+    }
+   
+    100% {
+     transform: translate(-50%, -75%) rotate(360deg);
+    }
+   }
+/* fin button */
