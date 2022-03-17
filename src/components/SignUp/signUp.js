@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './stylesSign.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -18,17 +18,16 @@ import photoForm from './imagesSign/placeSign.jpg';
 
 import { connect } from 'react-redux';
 import userActions from '../../redux/actions/userActions';
-import {Link as LinkRouter} from 'react-router-dom';
+import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 import { Menu } from '@mui/material';
 
 const SignUp = (props) => {
   console.log(props)
-const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
+    const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
+    let navigate = useNavigate()
+
     const [values, setValues] = React.useState({
-        amount: '',
         password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
       });
     
@@ -46,16 +45,42 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
+
 //select
-    const [age, setAge] = React.useState('');
+    const [country, setCountry] = React.useState('');
 
     const handleChange2 = (event) => {
-      setAge(event.target.value);
+      setCountry(event.target.value);
+    };
+
+    const handleSelect = (event) => {
+      handleChange2(event);
+      handleInputChange(event);
     };
 //submit
-    const handleSubmit = (event) => {
+    const [newUser, setNewUser] = useState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      photoURL: '', 
+      country: '',
+      from: "form-SignUp"
+    })
+
+    const handleInputChange = (event) => {
+      setNewUser({
+        ...newUser,
+        [event.target.name]: event.target.value
+      })
+    } 
+
+    const handleSubmit = async (event) => {
       event.preventDefault()
-      console.log(event.target);
+      await props.signUpUser(newUser, navigate)
+      }
+      
+     /*  console.log(event.target);
       const newUser ={
         firstName: event.target[0].value, 
         lastName: event.target[1].value,
@@ -64,12 +89,11 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
         photoURL: "https://cinefiloserial.com.ar/wp-content/uploads/2018/05/DW7r_ahV4AQ_DlO.jpg", 
         country: event.target[5].value,
         from: "form-SignUp"
-      }
-      props.signUpUser(newUser)
-      
-    }
+        */
     console.log(props.message)
-    alert(props.message.message)
+    /* alert(props.message.message) */
+    console.log(newUser)
+    
     return (
         <div className='divContainerSignUp'>
             <div className='imgSignUp'>
@@ -90,16 +114,17 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
       autoComplete="on"
       className='inputsSU'
     > 
-      <TextField id="outlined-basic" label="First Name" variant="outlined" />
-      <TextField id="outlined-name" label="Last Name" />
-      <TextField id="outlined-textarea" label="Email Address" placeholder="example@email.com" multiline />
+      <TextField /* className='outlined-basic' */ id='firstName' name='firstName' /* id="outlined-basic" */ label="First Name" variant="outlined" onChange={handleInputChange} />
+      <TextField /* id="outlined-name" */ label="Last Name" id='lastName' name='lastName' onChange={handleInputChange}/>
+      <TextField /* id="outlined-textarea" */ label="Email Address" placeholder="example@email.com" multiline id='email' name='email' onChange={handleInputChange} />
       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
-            id="outlined-adornment-password"
+            id="password"
             type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
+            /* value={values.password} */
+            onChange={handleInputChange}
+            name="password"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -116,19 +141,21 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
           />
         </FormControl>
 
-      <TextField id="filled-textarea" label="Photo URL" placeholder="URL Profile Picture" multiline />
+      <TextField /* id="filled-textarea" */ label="Photo URL" placeholder="URL Profile Picture" multiline id='photoURL' name='photoURL' onChange={handleInputChange}/>
       
         <FormControl sx={{ m: 1, minWidth: 100 }}>
         <InputLabel id="demo-simple-select-autowidth-label">Country</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={age}
-          onChange={handleChange2}
+          value={country}
+          onChange={handleSelect}
           autoWidth
           label="Country"
+          /* id='country' */
+          name='country'
         >
-          <MenuItem value="">
+          <MenuItem value="none">
             <em>None</em>
           </MenuItem>
           {countries.map(country=>
@@ -150,7 +177,7 @@ const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South K
             </div>
         
     );
-}
+          }
 
 const mapDispatchToProps = {
   signUpUser: userActions.signUpUser,
@@ -158,9 +185,11 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.userReducer.user,
     message: state.userReducer.message,
-    /* countriesApi: state.countriesDataReducer.countriesApi,
-    filterCountriesApi: state.countriesDataReducer.filterCountriesApi, */
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
+/* countriesApi: state.countriesDataReducer.countriesApi,
+    filterCountriesApi: state.countriesDataReducer.filterCountriesApi, */

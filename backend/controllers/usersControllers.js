@@ -7,7 +7,6 @@ const usersController = {
         console.log(req.body)
         try {
             const userExists = await UsersControl.findOne({email})
-        console.log(userExists.from.indexOf(from))
             if (userExists) {
                 if (userExists.from.indexOf(from) !== -1) {
                     res.json({
@@ -41,7 +40,7 @@ const usersController = {
             }else{
                 const hashedPassword = bcryptjs.hashSync(password, 10)
 
-                const newUser = await new User({
+                const newUser = await new UsersControl({
                     firstName,
                     lastName,
                     email,
@@ -88,7 +87,7 @@ const usersController = {
                     if (passwordMatches.length > 0) { 
                        
                         const userData = {
-                                        id: userExists._id,
+                                        /* id: userExists._id, */
                                         firstName: userExists.firstName,
                                         lastName: userExists.lastName,
                                         email: userExists.email,
@@ -96,12 +95,12 @@ const usersController = {
                                         }
                         await userExists.save()
 
-                        const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 })
+                        /* const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 }) */
                         
                         res.json({
                                 success: true,  
                                 from: from,
-                                response: {token,userData}, 
+                                response: {/* token */userData}, 
                                    message:"Welcome back "+userData.firstName.lastName,
                                  })
 
@@ -126,10 +125,10 @@ const usersController = {
                             email: userExists.email,
                             from: userExists.from
                             }
-                            const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 })
+                            /* const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 }) */
                         res.json({ success: true, 
                             from: from, 
-                            response: {token, userData}, 
+                            response: {/* token, */ userData}, 
                             message:"Welcome back "+userData.firstName.lastName,
                           })
                         }else{

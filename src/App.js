@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import CardDetails from './pages/UnderConstruction'
 import SignUp from './components/SignUp/signUp';
 import SignIn from './components/SignUp/signIn';
+import Snack from './components/SignUp/Snackbar';
+import Container from './components/SignUp/container';
 
 function App() {
 
@@ -15,16 +17,15 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <ResponsiveAppBar /> 
+      <Container/>
+      <Snack/>
         <Routes>
         <Route path='*' element={<Home/>}/> 
         <Route path='/home' element={<Home/>}/>
         <Route path='/cities' element={<Cities/>}/>
         <Route path='/UnderConstruction/:id' element={<CardDetails/>}/>
-        <Route path='/signup'element={<SignUp/>}/>
-        <Route path='/login'element={<SignIn/>}/>
-      {/*   <Route path='/details/:id' element={<CardDetails/>}/>
-        <Route path='/auth/signup'element={<SignUp/>}/>
-        <Route path='/auth/login'element={<SignIn/>}/> */}
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/login' element={<SignIn/>}/>
         </Routes>
       <Footer /> 
     </BrowserRouter>
@@ -33,3 +34,7 @@ function App() {
 }
 
 export default App;
+
+ {/*   <Route path='/details/:id' element={<CardDetails/>}/>
+        <Route path='/auth/signup'element={<SignUp/>}/>
+        <Route path='/auth/login'element={<SignIn/>}/> */}

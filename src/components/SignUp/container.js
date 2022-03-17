@@ -41,3 +41,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     SignOutUser: userActions.SignOutUser,
 }
+export default Container;
