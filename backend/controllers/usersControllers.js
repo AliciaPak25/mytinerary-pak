@@ -1,10 +1,61 @@
 const UsersControl = require('../models/usersModel')
 const bcryptjs = require('bcryptjs')
+const crypto = require('crypto')
+const nodemailer = require('nodemailer')
+
+const sendEmail = async (email, uniqueString) => { 
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',         
+        port: 465,
+        secure: true,
+        auth: {
+            user: "verifyemailauthmindhub@gmail.com",    
+            pass: "emailVerificationMindhub2022"                           
+        },
+        tls: {
+            rejectUnauthorized: false
+        }                                               
+    })
+
+    let sender = "verifyemailauthmindhub@gmail.com"  
+    let mailOptions = { 
+        from: sender,    
+        to: email,       
+        subject: "MyTinerary | Verify your email ",
+        html: `
+        <div >
+        <h1 style="color:red">Click <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email, thank you! </h1>
+        </div>
+        `
+    
+    };
+    await transporter.sendMail(mailOptions, function (error, response) { 
+        if (error) { console.log(error) }
+        else {
+            console.log("Message sent")
+
+        }
+    })
+};
 
 const usersController = {
+
+    verifyEmail: async (req, res) => {
+
+        const { uniqueString } = req.params; 
+
+        const user = await UsersControl.findOne({uniqueString: uniqueString})
+        console.log(user)
+        if (user) {
+            user.verifiedEmail = true 
+            await user.save()
+            res.redirect("http://localhost:3000/")
+        }
+        else { res.json({ success: false, response: "Your email is not verified" }) }
+    },
+
     signUpUser: async (req, res)=>{
         let {firstName, lastName, email, password, photoURL, country, from} = req.body.newUser
-        console.log(req.body)
         try {
             const userExists = await UsersControl.findOne({email})
             if (userExists) {
@@ -19,8 +70,9 @@ const usersController = {
                     userExists.from.push(from)
                     userExists.password.push(hashedPassword)
                     if(from === "form-SignUp"){
-                        //POSTERIORMENTE AGREGAREMOS LA VERIFICACION DE EMAIL
+                        userExists.uniqueString = crypto.randomBytes(15).toString('hex')
                         await userExists.save()
+                        await sendEmail(email, userExists.uniqueString)
 
                         res.json({
                             success: true, from: "form-SignUp",
@@ -44,10 +96,11 @@ const usersController = {
                     firstName,
                     lastName,
                     email,
-                    verifiedEmail: true,
                     password: [hashedPassword],
                     photoURL,
                     country,
+                    uniqueString: crypto.randomBytes(15).toString('hex'),
+                    verifiedEmail: false,
                     from: [from],
                 })
                 if (from !== "form-SignUp") {
@@ -59,6 +112,8 @@ const usersController = {
                     })
                 }else{
                     await newUser.save()
+                    await sendEmail(email, newUser.uniqueString)
+
                     res.json({
                         success: true,
                         from: "form-SignUp",
@@ -78,71 +133,69 @@ const usersController = {
             const userExists = await UsersControl.findOne({email})
 
             if (!userExists) {// PRIMERO VERIFICA QUE EL USUARIO EXISTA
-                res.json({success: false, message: "The email address provided has not been registered. Please, sign up."})
+                res.json({success: false, message: "The user or password does not match. Try again."})
             } else {
                 if (from !== "form-SignIn") { 
                     
                     let passwordMatches =  userExists.password.filter(pass =>bcryptjs.compareSync(password, pass))
                     
                     if (passwordMatches.length > 0) { 
-                       
-                        const userData = {
-                                        /* id: userExists._id, */
+                        
+                            const userData = {
+                                        id: userExists._id,
                                         firstName: userExists.firstName,
                                         lastName: userExists.lastName,
                                         email: userExists.email,
                                         from: userExists.from
                                         }
                         await userExists.save()
-
                         /* const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 }) */
-                        
                         res.json({
                                 success: true,  
                                 from: from,
                                 response: {/* token */userData}, 
-                                   message:"Welcome back "+userData.firstName.lastName,
-                                 })
-
-                    } else {
+                                message:"Welcome back "+userData.firstName+" "+userData.lastName,
+                                })
+                    
+                    }else {
                         res.json({ success: false, 
                             from: from, 
                             message:"You have not registered with "+from+". If you want to log in with this method, you must sign up with " +from
-                          })
+                        })
                     }
-                } else { 
-                    if(userExists.verifiedEmail){
+                } else {
                         
                         let passwordMatches =  userExists.password.filter(pass =>bcryptjs.compareSync(password, pass))
                         console.log(passwordMatches)
                         console.log("password serach result " +(passwordMatches.length > 0))
                         if(passwordMatches.length > 0){
-                            
-                        const userData = {
-                            id: userExists._id,
-                            firstName: userExists.firstName,
-                            lastName: userExists.lastName,
-                            email: userExists.email,
-                            from: userExists.from
+                            if(userExists.verifiedEmail){
+                                const userData = {
+                                    id: userExists._id,
+                                    firstName: userExists.firstName,
+                                    lastName: userExists.lastName,
+                                    email: userExists.email,
+                                    from: userExists.from
+                                    }
+                                 /* const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 }) */
+                                res.json({ success: true, 
+                                    from: from, 
+                                    response: {/* token, */ userData}, 
+                                    message:"Welcome back "+userData.firstName+" "+userData.lastName,
+                                })
+                            }else{
+                                res.json({ success: false, 
+                                    from: from, 
+                                    message:"Your email is not verified! Please, check your inbox to complete your sign up."
+                                  }) 
                             }
-                            /* const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 }) */
-                        res.json({ success: true, 
-                            from: from, 
-                            response: {/* token, */ userData}, 
-                            message:"Welcome back "+userData.firstName.lastName,
-                          })
+                        
                         }else{
                             res.json({ success: false, 
                                 from: from,  
                                 message:"The user or password does not match. Try again.",
                               })
                         }
-                    }else{
-                        res.json({ success: false, 
-                            from: from, 
-                            message:"Your email is not verified! Please, check your inbox to complete your sign up."
-                          }) 
-                    }
 
                 } //SI NO ESTA VERIFICADO
             }

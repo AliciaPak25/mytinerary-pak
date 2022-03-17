@@ -20,7 +20,8 @@ const userActions = {
         return async (dispatch, getState) => {
             const user = await axios.post('http://localhost:4000/api/auth/signIn', {logedUser})
             if(user.data.success){
-                /* dispatch({type: 'user', payload: user.data.response.logedUser}); */
+                dispatch({type: 'user', payload: user.data.response.logedUser});
+            }
                 dispatch({
                     type: 'message',
                     payload: {
@@ -29,8 +30,9 @@ const userActions = {
                         success: user.data.success
                     }
                 });
-            }else{console.log(user.data.message)}
+            /* }else{console.log(user.data.message)} */
         }
+
     },
     signOutUser: (closedUser) => {
         return async (dispatch, getState) => {

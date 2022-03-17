@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './stylesSign.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -10,14 +10,14 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {Link as LinkRouter} from 'react-router-dom';
+import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 import userActions from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 
 
-
-
 const SignIn = (props) => {
+    
+    let navigate = useNavigate()
 
     const [values, setValues] = React.useState({
         amount: '',
@@ -38,38 +38,55 @@ const SignIn = (props) => {
         });
       };
     
-      const handleMouseDownPassword = (event) => {
+    const handleMouseDownPassword = (event) => {
         event.preventDefault();
-      };
-    
-    const handleSubmit = (event) => {
+    };
+    const [logedUser, setLogedUser] = useState({
+        email: '',
+        password: '',
+        from: "form-SignIn"
+    })
+
+    const handleInputChange = (event) => {
+        setLogedUser({
+        ...logedUser,
+        [event.target.name]: event.target.value
+        })
+    } 
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        const logedUser = {
-            email: event.target[0].value,
-            password: event.target[1].value,
-            from: "form-SignIn"
-        }
-        props.SignInUser(logedUser)
+        await props.signInUser(logedUser, navigate)
     }
 
     return (
-        <div>
+        <div className='divContainerSignIn'>
+          <div className='textSignIn'>
             <h1>Welcome Back</h1>
             <p>It's nice to see you again!</p>
             <p>Log in to your account</p>
+            </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className='formContainer registerContainer' onSubmit={handleSubmit}>
+                        <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': { m: 1, width: '25ch' },
+                  }}
+                  noValidate
+                  autoComplete="on"
+                  className='inputsSU'
+                > 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                     <EmailIcon sx={{ color: 'lightBlue', mr: 1, my: 0.5 }} />
-                    <TextField id="input-with-sx" label="Email Address" placeholder='example@mail.com' variant="standard" />
+                    <TextField id="input-with-sx" label="Email Address" placeholder='example@mail.com' variant="standard"name='email' onChange={handleInputChange} />
                 </Box>
                 <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
                     <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                     <Input
                         id="standard-adornment-password"
                         type={values.showPassword ? 'text' : 'password'}
-                        value={values.password}
-                        onChange={handleChange('password')}
+                        name='password'
+                        onChange={handleInputChange}
                         endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -83,7 +100,8 @@ const SignIn = (props) => {
                         }
                     />
                 </FormControl>
-
+                        </Box>
+                  
                 <button type='submit'>Log In</button>
                 <p>or</p>
                 <p>Log in with Google</p>
@@ -92,4 +110,15 @@ const SignIn = (props) => {
         </div>
     );
 }
-export default SignIn;
+
+const mapDispatchToProps = {
+    signInUser: userActions.signInUser,
+  }
+  
+  const mapStateToProps = (state) => {
+    return {
+      user: state.userReducer.user,
+      message: state.userReducer.message,
+    }
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

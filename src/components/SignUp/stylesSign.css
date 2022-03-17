@@ -130,3 +130,34 @@ button {
     }
    }
 /* fin button */
+/* sign in */
+/* .divSignIn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.formSignIn{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+.divContainerSignIn{
+    background-color: rgb(14, 53, 88);
+    height: 100vh !important;
+    width: 100% !important;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+}
+.textSignIn{
+    background-color: rgb(56, 142, 240) !important;
+    width: 40%;
+    border-radius: 1em;
+    padding: 1em;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
