@@ -20,11 +20,41 @@ import { connect } from 'react-redux';
 import userActions from '../../redux/actions/userActions';
 import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 import { Menu } from '@mui/material';
-import FacebookSignUp from './FacebookSignUp';
 import GoogleSignUp from './GoogleSignUp';
 
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles(theme => ({
+  cardRoot: {
+    flexGrow: 1,
+    flexWrap: "wrap"
+  },
+  media: {
+    width: "100%",
+    height: "100%",
+    minWidth: 300,
+    minHeight: 170
+  },
+  mediaItem: {
+    flex: 1,
+    display: "block",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    minWidth: 300,
+    minHeight: 170
+  },
+  contentItem: {
+    flex: 2
+  }
+}));
+
 const SignUp = (props) => {
-  console.log(props)
+  const classes = useStyles();
     const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
     let navigate = useNavigate()
 
@@ -81,33 +111,27 @@ const SignUp = (props) => {
       event.preventDefault()
       await props.signUpUser(newUser, navigate)
       }
-      
-     /*  console.log(event.target);
-      const newUser ={
-        firstName: event.target[0].value, 
-        lastName: event.target[1].value,
-        email: event.target[2].value,
-        password: event.target[3].value,
-        photoURL: "https://cinefiloserial.com.ar/wp-content/uploads/2018/05/DW7r_ahV4AQ_DlO.jpg", 
-        country: event.target[5].value,
-        from: "form-SignUp"
-        */
-    console.log(props.message)
-    /* alert(props.message.message) */
-    console.log(newUser)
     
     return (
         <div className='divContainerSignUp'>
-            <div className='imgSignUp'>
-                    <img src={photoForm} className='photoSU' alt='beautiful-place'/>
-            </div>
-            <div className='registerContainer'>
-                <h1>Create a new account</h1>
-                <p>Want to sign up? Fill out this form!</p>
-            <form className='formContainer registerContainer' onSubmit={handleSubmit}>
-            
-                
-    <Box
+
+    <Card>
+      <Grid container className={classes.cardRoot}>
+        <Grid item xs={12} sm className={classes.mediaItem}>
+          <img src={photoForm} /* className='photoSU' */ className={classes.media} alt='beautiful-place' width={300}
+            height={170}/>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs direction="column">
+            <CardContent className='CardContentForm'>
+              <Typography gutterBottom variant="h5" component="h2">
+              Create a new account
+              </Typography>
+              <Typography variant="body2" component="p">
+              Want to sign up? Fill out this form!
+              </Typography>
+              <form className='formContainer registerContainer' onSubmit={handleSubmit}>
+              <Box
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
@@ -116,15 +140,14 @@ const SignUp = (props) => {
       autoComplete="on"
       className='inputsSU'
     > 
-      <TextField /* className='outlined-basic' */ id='firstName' name='firstName' /* id="outlined-basic" */ label="First Name" variant="outlined" onChange={handleInputChange} />
-      <TextField /* id="outlined-name" */ label="Last Name" id='lastName' name='lastName' onChange={handleInputChange}/>
-      <TextField /* id="outlined-textarea" */ label="Email Address" placeholder="example@email.com" multiline id='email' name='email' onChange={handleInputChange} />
+      <TextField name='firstName' id="outlined-basic" label="First Name" variant="outlined" onChange={handleInputChange} />
+      <TextField id="outlined-name" label="Last Name" name='lastName' onChange={handleInputChange}/>
+      <TextField id="outlined-textarea"  label="Email Address" placeholder="example@email.com" multiline name='email' onChange={handleInputChange} />
       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
           <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
             id="password"
             type={values.showPassword ? 'text' : 'password'}
-            /* value={values.password} */
             onChange={handleInputChange}
             name="password"
             endAdornment={
@@ -143,7 +166,7 @@ const SignUp = (props) => {
           />
         </FormControl>
 
-      <TextField /* id="filled-textarea" */ label="Photo URL" placeholder="URL Profile Picture" multiline id='photoURL' name='photoURL' onChange={handleInputChange}/>
+      <TextField id="filled-textarea" label="Photo URL" placeholder="URL Profile Picture" multiline name='photoURL' onChange={handleInputChange}/>
       
         <FormControl sx={{ m: 1, minWidth: 100 }}>
         <InputLabel id="demo-simple-select-autowidth-label">Country</InputLabel>
@@ -154,7 +177,6 @@ const SignUp = (props) => {
           onChange={handleSelect}
           autoWidth
           label="Country"
-          /* id='country' */
           name='country'
         >
           <MenuItem value="none">
@@ -167,18 +189,20 @@ const SignUp = (props) => {
       </FormControl>
       </Box>
             <button type='submit'>
-              <span>Sign Up</span>
+              <span className='spanSign'>Sign Up</span>
               <div class="liquid"></div>
             </button>
             <p>or</p>
             <GoogleSignUp/>
-            <FacebookSignUp/>
             <div>Already have an account? <LinkRouter to="/login">Log in here</LinkRouter></div>
-            
             </form>
-            </div>
-            </div>
-        
+            </CardContent>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Card>
+    </div>
+    
     );
           }
 
@@ -196,3 +220,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 
 /* countriesApi: state.countriesDataReducer.countriesApi,
     filterCountriesApi: state.countriesDataReducer.filterCountriesApi, */
+
+
+/* 
+
+function EpisodeCard() {
+  
+  );
+}
+
+export default EpisodeCard; */

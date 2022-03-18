@@ -8,15 +8,17 @@
 
 .divContainerSignUp{
     background-image: url(./imagesSign/backgroundSignUp.jpg);
-    height: 100vh !important;
+    height: 100% !important;
     width: 100% !important;
     display: flex;
+    justify-content: center;
     /* flex-direction: column; */
     background-size: cover !important;
     /* background-repeat: no-repeat !important; */
     /* background-position: 30% 75%; */
     /* overflow: hidden; */
     font-family: 'Montserrat', sans-serif;
+
 }
 
 .inputsSU{
@@ -35,14 +37,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 90%;
 }
 .formContainer{
+    width: 100%;
+    /* height: 100vh;
+    width: 100%;
+    z-index: 0; */
+}
+.CardContentForm{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
-    z-index: 0;
+    width: 100% !important;
 }
 .imgSignUp{
     z-index: 1;
@@ -73,9 +81,9 @@ button {
     border: none;
    }
    
-   button span {
+.spanSign{
     position: relative;
-    /* color: #fff; */
+    color: #fff;
     font-family: Arial;
     letter-spacing: 8px;
     z-index: 1;
@@ -160,19 +168,17 @@ button {
     justify-content: center;
     align-items: center;
 }
-/* facebook */
-.my-facebook-button-class{
-	background-color: rgb(52, 52, 207);
-	color:white;
-	
-}
 
 .buttonsocial :nth-child(1){
 	margin-right: 0px !important;
 	width: 45px !important;
 }
 .buttonGoogle{
-    color: black;
+    color: black !important;
+    border: 2px solid rgb(24, 145, 185) !important;
+    box-shadow: 3px #114861 !important;
+    letter-spacing: 2px;
+    margin-bottom: 1em !important;
 }
 .buttonsocial{
 	height: 50px;
@@ -183,3 +189,56 @@ button {
 	border: 0px;
 	border-radius: 10px !important;
 }
+
+/* card sign up*/
+
+.card {
+    background: whitesmoke;
+    width: 300px;
+    padding: 11px;
+    border-radius: 20px;
+    border: none;
+  }
+  
+  .card-image {
+    width: 300px;
+    height: 150px;
+    border-radius: 5px 5px 0px 0px;
+    border: none;
+  }
+  
+  .card-inner {
+    padding: 20px;
+    background: #ceedff;
+  }
+  .card-text {
+    margin-bottom: 10px;
+  }
+  .card-button {
+    background: #1db2bf;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+  }
+  
+  /* Start here */
+  
+  /* media query to use */
+  @media screen and (min-width: 800px) {
+    .card {
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+    }
+    .card-image {
+      border-radius: 5px 0px 0px 5px;
+      border: none;
+    }
+    .card-inner {
+      flex: 3px;
+    }
+  }
+
+
