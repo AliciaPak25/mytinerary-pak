@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import userActions from "../../redux/actions/userActions";
 
 function Container(props) {
+  console.log(props)
   function SignOut() {
     props.signOutUser(props.user.email);
     console.log("sign out");
@@ -16,7 +17,7 @@ function Container(props) {
     <>
         {!props.user ?
         (<img src={'https://png.pngitem.com/pimgs/s/24-248235_user-profile-avatar-login-account-fa-user-circle.png'} alt="user" width={30}/>) :
-          <img src={'https://media.vogue.mx/photos/5e9f0aef8966aa000859aac6/master/w_1600%2Cc_limit/como-hacer-el-peinado-de-ariana-grande.jpg'} alt="ariana" width={30}/>
+          <img src={props.user.photoURL} alt="google-profile-picture" width={50}/>
         }
       {props.user ? (
         <>

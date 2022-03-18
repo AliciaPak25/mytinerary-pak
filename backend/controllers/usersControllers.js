@@ -147,6 +147,7 @@ const usersController = {
                                         firstName: userExists.firstName,
                                         lastName: userExists.lastName,
                                         email: userExists.email,
+                                        photoURL: userExists.photoURL,
                                         from: userExists.from
                                         }
                         await userExists.save()
@@ -178,6 +179,7 @@ const usersController = {
                                     firstName: userExists.firstName,
                                     lastName: userExists.lastName,
                                     email: userExists.email,
+                                    photoURL: userExists.photoURL,
                                     from: userExists.from
                                     }
                                 const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 })
@@ -221,7 +223,7 @@ const usersController = {
         console.log(req.user)
         if(!req.err){
         res.json({success:true,
-                response:{id:req.user.id, firstName:req.user.firstName,lastName:req.user.lastName, email:req.user.email, from:"token"},
+                response:{id:req.user.id, firstName:req.user.firstName,lastName:req.user.lastName, email:req.user.email, photoURL: req.user.photoURL, from:"token"},
                 message:"Welcome back "+req.user.firstName+" "+req.user.lastName}) 
         }else{
             res.json({success:false,
