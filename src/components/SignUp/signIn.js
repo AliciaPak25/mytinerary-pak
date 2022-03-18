@@ -13,6 +13,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 import userActions from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
+import GoogleSignIn from './GoogleSignIn';
 
 
 const SignIn = (props) => {
@@ -104,7 +105,7 @@ const SignIn = (props) => {
                   
                 <button type='submit'>Log In</button>
                 <p>or</p>
-                <p>Log in with Google</p>
+                <GoogleSignIn/>
                 <div>Not a member yet? <LinkRouter to="/signup">Sign up now!</LinkRouter></div>
             </form>
         </div>

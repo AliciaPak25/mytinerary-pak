@@ -75,7 +75,7 @@ button {
    
    button span {
     position: relative;
-    color: #fff;
+    /* color: #fff; */
     font-family: Arial;
     letter-spacing: 8px;
     z-index: 1;
@@ -160,4 +160,26 @@ button {
     justify-content: center;
     align-items: center;
 }
+/* facebook */
+.my-facebook-button-class{
+	background-color: rgb(52, 52, 207);
+	color:white;
+	
+}
 
+.buttonsocial :nth-child(1){
+	margin-right: 0px !important;
+	width: 45px !important;
+}
+.buttonGoogle{
+    color: black;
+}
+.buttonsocial{
+	height: 50px;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	border: 0px;
+	border-radius: 10px !important;
+}

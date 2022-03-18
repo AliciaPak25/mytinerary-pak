@@ -1,44 +1,64 @@
-import React from 'react';
-import SignUp from './signUp';
-import SignIn from './signIn';
-import { connect } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import userActions from '../../redux/actions/userActions';
-import { display } from '@mui/system';
+import React from "react";
+import SignUp from "./signUp";
+import SignIn from "./signIn";
+import { connect } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import userActions from "../../redux/actions/userActions";
 
 function Container(props) {
+  function SignOut() {
+    props.signOutUser(props.user.email);
+    console.log("sign out");
+  }
+  
 
-    function SignOut() {
-        props.SignOutUser(props.user.email)
-    }
-
-    return (
+  return (
+    <>
+        {!props.user ?
+        (<img src={'https://png.pngitem.com/pimgs/s/24-248235_user-profile-avatar-login-account-fa-user-circle.png'} alt="user" width={30}/>) :
+          <img src={'https://media.vogue.mx/photos/5e9f0aef8966aa000859aac6/master/w_1600%2Cc_limit/como-hacer-el-peinado-de-ariana-grande.jpg'} alt="ariana" width={30}/>
+        }
+      {props.user ? (
         <>
-            {props.user ? <><h1>Connected user {props.user.firstName && props.user.lastName} from {props.user.from[0]}</h1>
-                <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
-                    <button onClick={SignOut} className="btn btn primary btn-block" style={{maxWidth: 400}}></button>
-                </div>
-            </>
-                : <h1>There is no user logged in</h1>}
-            <div className='card bg-light'>
-                <article className='card-body mx-auto' style={{maxWidth: 400}}>
-                    <h4 className='card-title mt-3 text-center'>User Account</h4>
-                    <p>Get started with your free account</p>
-
-                    <p className='divider-text'>
-                        <span className='bg-light'>OR</span>
-                    </p>
-                </article>
-            </div>
+          <h1>
+            Connected user {props.user.firstName && props.user.lastName} from{" "}
+            {props.user.from}
+          </h1>
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <button
+              onClick={SignOut}
+              className="btn btn-primary btn-block"
+              style={{ maxWidth: 400 }}
+            >
+              {" "}
+              SignOut{" "}
+            </button>
+          </div>
         </>
-    );
+      ) : (
+        <h1>There is no user connected</h1>
+      )}
+      {}
+      <div className="card bg-light">
+        {/* <BrowserRouter>
+						<Routes>
+							{!props.user &&<Route path="/signIn" element={<SignIn />} />}
+							{!props.user &&<Route path="/signUp" element={<SignUp />} />}
+						</Routes>
+					</BrowserRouter> */}
+      </div>
+    </>
+  );
 }
 const mapStateToProps = (state) => {
-    return {
-        user: state.userReducer.user,
-    }
-}
+  return {
+    user: state.userReducer.user,
+  };
+};
 const mapDispatchToProps = {
-    SignOutUser: userActions.SignOutUser,
-}
-export default Container;
+  signOutUser: userActions.signOutUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

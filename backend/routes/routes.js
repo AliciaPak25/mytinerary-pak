@@ -7,7 +7,8 @@ const usersController = require('../controllers/usersControllers')
 
 const {obtainCities, addACity, deleteACity, modifyACity, getASpecificCityByItsId} = citiesController
 const {consultAllItineraries, consultItinerariesFromAParticularIDCity, consultOneItineraryByItsId, addNewItinerary, modifyItinerary, deleteItinerary} = itineraryController
-const {signUpUser , signInUser, signOutUser, verifyEmail} = usersController
+const {signUpUser , signInUser, signOutUser, verifyEmail, verifyToken} = usersController
+const passport = require('../config/passport')
 
 Router.route('/cities')
 .get(obtainCities)
@@ -41,5 +42,8 @@ Router.route('/auth/signOut')
 
 Router.route('/verify/:uniqueString')
 .get(verifyEmail)
+
+Router.route('/auth/signInToken')
+.get(passport.authenticate('jwt',{session:false}), verifyToken)
 
 module.exports = Router

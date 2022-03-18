@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
+/* import Container from '@mui/material/Container'; */
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -18,11 +18,15 @@ import {Link as LinkRouter} from "react-router-dom";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import logo from '../image.svg';
 import '../styles/stylesNavBar.css'
+import Container from './SignUp/container';
+import {connect} from 'react-redux';
+import userActions from '../redux/actions/userActions';
 
 const pages = ['Home', 'Cities'];
 const settings = ['Sign In', 'Sign Up'];
 
-  const ResponsiveAppBar = () => {
+  const ResponsiveAppBar = (props) => {
+    console.log(props.user)
     return(
       <nav class="navbar navbar-light bg-light fixed-top principalNav">
   <div class="container-fluid">
@@ -39,7 +43,7 @@ const settings = ['Sign In', 'Sign Up'];
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-          <LinkRouter to={"/home"} className='notUnderlined'>Home</LinkRouter>
+            <LinkRouter to={"/home"} className='notUnderlined'>Home</LinkRouter>
           </li>
           <li class="nav-item">
           <LinkRouter to={"/cities"} className='notUnderlined'>Cities</LinkRouter>
@@ -49,12 +53,13 @@ const settings = ['Sign In', 'Sign Up'];
             User
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              <li><LinkRouter to={"/signup"} className="dropdown-item">Sign Up</LinkRouter></li>
-              <li><LinkRouter to={"/login"} className="dropdown-item">Log In</LinkRouter></li>
+              <li>{!props.user ? (<LinkRouter to={"/signup"} className="dropdown-item">Sign Up</LinkRouter>) : null}</li>
+              <li>{!props.user ? (<LinkRouter to={"/login"} className="dropdown-item">Log In</LinkRouter>) : null}</li>
               <li>
                 <hr class="dropdown-divider"></hr>
               </li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <Container/>
             </ul>
           </li>
         </ul>
@@ -69,13 +74,13 @@ const settings = ['Sign In', 'Sign Up'];
 </nav>
     );
 }
-/* const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
       user: state.userReducer.user,
   }
 }
 const mapDispatchToProps = {
-  userLogOut: userActions.userLogOut,
-
-} */
-export default ResponsiveAppBar;
+  signOutUser: userActions.signOutUser,
+  sigInUser: userActions.signInUser,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveAppBar);

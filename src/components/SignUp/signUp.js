@@ -20,6 +20,8 @@ import { connect } from 'react-redux';
 import userActions from '../../redux/actions/userActions';
 import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 import { Menu } from '@mui/material';
+import FacebookSignUp from './FacebookSignUp';
+import GoogleSignUp from './GoogleSignUp';
 
 const SignUp = (props) => {
   console.log(props)
@@ -169,7 +171,8 @@ const SignUp = (props) => {
               <div class="liquid"></div>
             </button>
             <p>or</p>
-            <p>Sign up with Google</p>
+            <GoogleSignUp/>
+            <FacebookSignUp/>
             <div>Already have an account? <LinkRouter to="/login">Log in here</LinkRouter></div>
             
             </form>

@@ -2,6 +2,7 @@ const UsersControl = require('../models/usersModel')
 const bcryptjs = require('bcryptjs')
 const crypto = require('crypto')
 const nodemailer = require('nodemailer')
+const jwt = require('jsonwebtoken')
 
 const sendEmail = async (email, uniqueString) => { 
     const transporter = nodemailer.createTransport({
@@ -106,7 +107,7 @@ const usersController = {
                 if (from !== "form-SignUp") {
                     await newUser.save()
                     res.json({
-                        success: true.valueOf,
+                        success: true,
                         from: "form-SignUp",
                         message: "Congratulations! Your account has been successfully created with " +from
                     })
@@ -149,11 +150,13 @@ const usersController = {
                                         from: userExists.from
                                         }
                         await userExists.save()
-                        /* const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 }) */
+
+                        const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn: 60* 60* 24})
+                        
                         res.json({
                                 success: true,  
                                 from: from,
-                                response: {/* token */userData}, 
+                                response: {token, userData}, 
                                 message:"Welcome back "+userData.firstName+" "+userData.lastName,
                                 })
                     
@@ -177,10 +180,10 @@ const usersController = {
                                     email: userExists.email,
                                     from: userExists.from
                                     }
-                                 /* const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 }) */
+                                const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 })
                                 res.json({ success: true, 
                                     from: from, 
-                                    response: {/* token, */ userData}, 
+                                    response: {token, userData}, 
                                     message:"Welcome back "+userData.firstName+" "+userData.lastName,
                                 })
                             }else{
@@ -213,5 +216,17 @@ const usersController = {
         await user.save()
         res.json(console.log('this session has been signed out ' + email))
     },
+
+    verifyToken:(req, res) => {
+        console.log(req.user)
+        if(!req.err){
+        res.json({success:true,
+                response:{id:req.user.id, firstName:req.user.firstName,lastName:req.user.lastName, email:req.user.email, from:"token"},
+                message:"Welcome back "+req.user.firstName+" "+req.user.lastName}) 
+        }else{
+            res.json({success:false,
+            message:"Please, sign in again."}) 
+        }
+    }
 }
 module.exports = usersController
