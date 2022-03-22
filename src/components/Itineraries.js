@@ -13,11 +13,12 @@ import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
 import PaidIcon from '@mui/icons-material/Paid';
 import PriceItinerary from "./PriceItineraries";
+import Likes from "./Likes";
 
 function CardItinerary(props) {
     let {id} = useParams()
-    console.log(props)
-    console.log(props.itineraries[0])
+    /* console.log(props)
+    console.log(props.itineraries[0]) */
     useEffect(()=>{
         props.getItineraryByCity(id)
     },[])
@@ -32,14 +33,14 @@ function CardItinerary(props) {
   );
 }
 
-
-const mapDispatchToProps = {
-    getItineraryByCity: itinerariesActions.getItineraryByCity,
-}
 const mapStateToProps = (state) => {
     return {
         itineraries: state.itinerariesReducer.itineraries,
     }
+}
+
+const mapDispatchToProps = {
+    getItineraryByCity: itinerariesActions.getItineraryByCity,
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(CardItinerary);

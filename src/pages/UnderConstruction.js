@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import citiesAction from '../redux/actions/citiesActions';
-
+import Likes from '../components/Likes';
 
 
 function ActionAreaCard(props) {
@@ -68,10 +68,11 @@ function ActionAreaCard(props) {
 
     {props.itineraries.length > 0 ? 
       <CardItinerary />
-      : <h1>Sorry! We couldn't any itineraries for this city</h1>}
+      : <h1>Sorry! We couldn't find any itineraries for this city</h1>}
 
     <Stack spacing={2} direction="row" className='buttonDetail'>
     <LinkRouter to={`/home`}><Button variant="contained">Back to Home</Button></LinkRouter>
+    <LinkRouter to={`/cities`}><Button variant="contained">Back to Cities</Button></LinkRouter>
     </Stack>
     
     </div>

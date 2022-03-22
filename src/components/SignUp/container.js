@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import userActions from "../../redux/actions/userActions";
 
 function Container(props) {
-  console.log(props)
   function SignOut() {
     props.signOutUser(props.user.email);
     console.log("sign out");

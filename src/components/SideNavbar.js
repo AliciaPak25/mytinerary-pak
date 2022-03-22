@@ -26,47 +26,46 @@ const pages = ['Home', 'Cities'];
 const settings = ['Sign In', 'Sign Up'];
 
   const ResponsiveAppBar = (props) => {
-    console.log(props.user)
     return(
-      <nav class="navbar navbar-light bg-light fixed-top principalNav">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">MyTinerary</a>
-    <button class="navbar-toggler hamburguerButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <nav className="navbar navbar-light bg-light fixed-top principalNav">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">MyTinerary</a>
+    <button className="navbar-toggler hamburguerButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <p className='menuP'>Menu</p>
-      <span class="navbar-toggler-icon hamburguerIcon"></span>
+      <span className="navbar-toggler-icon hamburguerIcon"></span>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MyTinerary</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div className="offcanvas-header">
+        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">MyTinerary</h5>
+        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
+      <div className="offcanvas-body">
+        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li className="nav-item">
             <LinkRouter to={"/home"} className='notUnderlined'>Home</LinkRouter>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
           <LinkRouter to={"/cities"} className='notUnderlined'>Cities</LinkRouter>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             User
             </a>
-            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+            <ul className="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
               <li>{!props.user ? (<LinkRouter to={"/signup"} className="dropdown-item">Sign Up</LinkRouter>) : null}</li>
               <li>{!props.user ? (<LinkRouter to={"/login"} className="dropdown-item">Log In</LinkRouter>) : null}</li>
               <li>
-                <hr class="dropdown-divider"></hr>
+                <hr className="dropdown-divider"></hr>
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a className="dropdown-item" href="#">Something else here</a></li>
               <Container/>
             </ul>
           </li>
         </ul>
         {}
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form className="d-flex">
+          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <button className="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>

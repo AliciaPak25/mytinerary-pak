@@ -13,7 +13,7 @@ function GoogleSignUp(props) {
       lastName: res.profileObj.familyName,
       email: res.profileObj.email,
       password: res.profileObj.googleId,
-      photoURL: res.profileObj.photoURL, 
+      photoURL: res.profileObj.ImageUrl, 
       country: 'Argentina',
       from: "google"
     }

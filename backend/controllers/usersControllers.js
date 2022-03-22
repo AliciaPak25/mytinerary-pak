@@ -62,7 +62,7 @@ const usersController = {
             if (userExists) {
                 if (userExists.from.indexOf(from) !== -1) {
                     res.json({
-                            success: true, 
+                            success: false /* true */ , 
                             from: "form-SignUp",
                             message: "You have already registered in this way. Please, sign in."
                         })

@@ -110,8 +110,16 @@ const SignUp = (props) => {
     const handleSubmit = async (event) => {
       event.preventDefault()
       await props.signUpUser(newUser, navigate)
-      }
-    
+     
+      /* setNewUser({firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      photoURL: '', 
+      country: '',
+      from: "form-SignUp"}) */
+    }
+
     return (
         <div className='divContainerSignUp'>
 
@@ -190,7 +198,7 @@ const SignUp = (props) => {
       </Box>
             <button type='submit'>
               <span className='spanSign'>Sign Up</span>
-              <div class="liquid"></div>
+              <div className="liquid"></div>
             </button>
             <p>or</p>
             <GoogleSignUp/>

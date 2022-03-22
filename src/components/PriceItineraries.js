@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import PaidIcon from '@mui/icons-material/Paid';
 import { PriceChange } from '@mui/icons-material';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import Likes from './Likes';
 
 const PriceItinerary = ({itinerary}) => {
     const [expanded, setExpanded] = React.useState(false);
@@ -47,6 +48,7 @@ const PriceItinerary = ({itinerary}) => {
 
           <div className="body__buttons">
             <div className="body__button">
+              <Likes likes = {itinerary.likes} id={itinerary._id}/>
               <i>Likes: {itinerary.likes}</i>
               <box-icon
                 color="red"

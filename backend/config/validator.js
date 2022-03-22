@@ -21,7 +21,7 @@ const validator = (req, res, next) => {
             'string.pattern': "Password must be alphanumeric and contain a number."
         }),
         //consultar photoURL
-        photoURL: joi.string().required().trim(), //joi.string().uri({scheme: ['https://?']}).required(),
+        photoURL: joi.string(), //joi.string().uri({scheme: ['https://?']}).required(),
         
         country: joi.string().required(),
 
