@@ -8,6 +8,9 @@ import PaidIcon from '@mui/icons-material/Paid';
 import { PriceChange } from '@mui/icons-material';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import Likes from './Likes';
+import ActivitiesCards from '../components/Activities';
+import {connect} from 'react-redux';
+import activitiesActions from '../redux/actions/activitiesActions';
 
 const PriceItinerary = ({itinerary}) => {
     const [expanded, setExpanded] = React.useState(false);
@@ -89,6 +92,7 @@ const PriceItinerary = ({itinerary}) => {
                   }
               </ExpandMore>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
+                  <ActivitiesCards id={itinerary._id} />
                   <h3>{itinerary.comments}</h3>
                   
                   <Button variant="contained" color="success" onClick={handleExpandClick}>
@@ -101,5 +105,15 @@ const PriceItinerary = ({itinerary}) => {
     </div>
     );
 }
+const mapStateToProps = (state) => {
+  return {
+      activities: state.activitiesReducer.activities,
+  }
+}
 
-export default PriceItinerary;
+const mapDispatchToProps = {
+  getActivitiesByItinerary: activitiesActions.getActivitiesByItinerary,
+  fetchActivities: activitiesActions.fetchActivities,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PriceItinerary);

@@ -18,6 +18,7 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import citiesAction from '../redux/actions/citiesActions';
 import Likes from '../components/Likes';
+import ActivitiesCards from '../components/Activities';
 
 
 function ActionAreaCard(props) {

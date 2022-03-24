@@ -4,10 +4,12 @@ const validator = require('../config/validator')
 const citiesController = require('../controllers/citiesControllers')
 const itineraryController = require('../controllers/itinerariesControllers')
 const usersController = require('../controllers/usersControllers')
+const activitiesController = require('../controllers/activitiesControllers')
 
 const {obtainCities, addACity, deleteACity, modifyACity, getASpecificCityByItsId} = citiesController
 const {consultAllItineraries, consultItinerariesFromAParticularIDCity, consultOneItineraryByItsId, addNewItinerary, modifyItinerary, deleteItinerary, likesAndDislikes} = itineraryController
 const {signUpUser , signInUser, signOutUser, verifyEmail, verifyToken} = usersController
+const {obtainActivities, addActivities, deleteActivities, modifyActivities, getSomeSpecificActivitiesByItsId, getActivitiesFromAParticularIDItinerary} = activitiesController
 const passport = require('../config/passport')
 
 Router.route('/cities')
@@ -48,5 +50,17 @@ Router.route('/auth/signInToken')
 
 Router.route('/likes&dislikes/:id')
 .put(passport.authenticate('jwt',{session:false}), likesAndDislikes)
+
+Router.route('/activities')
+.get(obtainActivities)
+.post(addActivities)
+
+Router.route('/activities/:id')
+.get(getSomeSpecificActivitiesByItsId)
+.put(modifyActivities)
+.delete(deleteActivities)
+
+Router.route('/activities/itinerary/:itineraryId')
+.get(getActivitiesFromAParticularIDItinerary)
 
 module.exports = Router

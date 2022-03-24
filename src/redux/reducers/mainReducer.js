@@ -7,7 +7,8 @@ import userReducer from './userReducer';
 const mainReducer = combineReducers({
     citiesReducer,
     itinerariesReducer,
-    userReducer
+    userReducer,
+    activitiesReducer
 })
 
 export default mainReducer
