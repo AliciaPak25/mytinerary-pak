@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../styles/stylesItineraries.css";
 import itinerariesActions from "../redux/actions/itinerariesActions";
 import itinerariesReducer from "../redux/reducers/itinerariesReducer";
@@ -17,17 +17,18 @@ import Likes from "./Likes";
 
 function CardItinerary(props) {
     let {id} = useParams()
+    const [reload, setReload] = useState(false)
     /* console.log(props)
     console.log(props.itineraries[0]) */
     useEffect(()=>{
         props.getItineraryByCity(id)
-    },[])
+    },[reload])
 
   
   return (
     
     <div className="App">
-        {props.itineraries?.map(itinerary=> <PriceItinerary itinerary={itinerary}/>)}
+        {props.itineraries?.map(itinerary=> <PriceItinerary setReload={setReload} reload={reload} itinerary={itinerary}/>)}
         
     </div>
   );

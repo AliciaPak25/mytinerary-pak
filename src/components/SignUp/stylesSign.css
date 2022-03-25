@@ -191,38 +191,6 @@ button {
 }
 
 /* card sign up*/
-
-.card {
-    background: whitesmoke;
-    width: 300px;
-    padding: 11px;
-    border-radius: 20px;
-    border: none;
-  }
-  
-  .card-image {
-    width: 300px;
-    height: 150px;
-    border-radius: 5px 5px 0px 0px;
-    border: none;
-  }
-  
-  .card-inner {
-    padding: 20px;
-    background: #ceedff;
-  }
-  .card-text {
-    margin-bottom: 10px;
-  }
-  .card-button {
-    background: #1db2bf;
-    padding: 20px;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
-  }
-  
-  /* Start here */
   
   /* media query to use */
   @media screen and (min-width: 800px) {
@@ -242,3 +210,4 @@ button {
   }
 
 
+ 

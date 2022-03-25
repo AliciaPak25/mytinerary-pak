@@ -19,9 +19,11 @@ const itinerariesActions = {
     fetchOneItinerary: (id)=>{
         return async (dispatch, getState) => {
             const res = await axios.get('http://localhost:4000/api/itineraries/'+id)
-            dispatch({type: 'fetchOneItinerary', payload: res.data.response})
+            return res
         }
     },
+
+    /* dispatch({type: 'fetchOneItinerary', payload: res.data.response}) */
 
     deleteItinerary: (id) =>{
         return async(dispatch, getState) => {
@@ -34,18 +36,28 @@ const itinerariesActions = {
         }
     },
 
-    /* filtrate: (itineraries, value)=>{
-        return (dispatch,getState)=>{
-            dispatch({type:'filtering', payload:{itineraries, value}})
-        }
-    }, */
-
     addNewItinerary: (name,price)=>{
         return async(dispatch,getState)=>{
             const res= await axios.post('http://localhost:4000/api/itineraries',{name,price})
             dispatch({type:'addItinerary', payload: res.data.response})
     
         }
-}
+    },
+
+    likesAndDislikes: (itineraryId) => {
+        const token = localStorage.getItem('token')
+        return async() => {
+            try {
+                let response = await axios.put(`http://localhost:4000/api/itineraries/likes&dislikes/${itineraryId}`, {},
+                {headers:{
+                    Authorization: "Bearer "+token
+                    }
+                })
+                return response
+            }catch(error){
+                console.log(error)
+            }
+        }
+    }
 }
 export default itinerariesActions;

@@ -4,39 +4,32 @@ import activitiesReducer from '../redux/reducers/activitiesReducer';
 import {connect} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import "../styles/stylesActivities.css";
+import CircularIndeterminate from './Loading';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 const ActivitiesCards = (props) => {
     
-    const [activity, setActivity] = useState([])
+    const [activities, setActivities] = useState([])
 
     useEffect(()=>{
-        props.activityPerItinerary(props.id).then(res=>setActivity(res.response))
+        props.activityPerItinerary(props.id).then(res=>setActivities(res.response))
     },[])
     console.log(props.id)
 
     return (
         <div className="CardActivities">
-            {activity.length ?activity.map(activity=>
-                <div class="blog-card spring-fever">
-                <div class="title-content">
-                  <h3>{activity.activityName}</h3>
-                  <hr />
-                  <div class="intro">Description</div>
-                </div>
-                <div class="card-info">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. 
-                </div>
-                <div class="utility-info">
-                  <ul class="utility-list">
-                    <li class="comments">12</li>
-                    <li class="date">03.12.2015</li>
-                  </ul>
-                </div>
-                <div class="gradient-overlay"></div>
-                <div class="color-overlay"></div>
+            {activities.length ?activities.map(activity=>
+              <div class="card text-white cardActivity">
+              <img src={process.env.PUBLIC_URL+`/assets/activities/${activity.activityImage}`} class="card-img imageActivity" alt="activity"/>
+              <div class="card-img-overlay">
+                <h5 class="card-title">{activity.activityName}</h5>
               </div>
-            ): <h1>No tiene actividades</h1>}
-            
+              </div>
+            ): <CircularIndeterminate/>}
         </div>
       );
 }

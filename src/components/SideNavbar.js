@@ -57,16 +57,16 @@ const settings = ['Sign In', 'Sign Up'];
               <li>
                 <hr className="dropdown-divider"></hr>
               </li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
+              <li><a className="dropdown-item" href="#">{/* Something else here */}</a></li>
               <Container/>
             </ul>
           </li>
         </ul>
-        {}
+       {/*  {}
         <form className="d-flex">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> */}
       </div>
     </div>
   </div>

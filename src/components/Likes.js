@@ -1,29 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import userActions from '../redux/actions/userActions';
-import userReducer from '../redux/reducers/userReducer';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import itinerariesActions from '../redux/actions/itinerariesActions';
+import userActions from '../redux/actions/userActions';
+import {useParams} from 'react-router-dom';
 
 function Likes(props){
-    
-    const likeDislike = async() =>{
-        const token = localStorage.getItem("token")
-        console.log(props)
-        console.log(token)
-        await axios.put(`http://localhost:4000/api/likes&dislikes/${props.id}`,{},{
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        })
-        .then(response => console.log(response))
-    }
-    likeDislike()
 
+    const {id} = useParams()
+    /* const [itinerary, setItinerary] = useState() */
+    
+
+   /*  useEffect(()=>{
+        props.fetchOneItinerary(id)
+            .then(response => setItinerary(response.data.response.itinerary))
+    }, [reload]) */
+    
+    async function likesOrDislikes() {
+        await props.likesAndDislikes(props.id)
+
+        props.setReload(!props.reload)
+    }
     return(
         <>
-        <button onClick={likeDislike}> <FavoriteBorderIcon/> </button>
-        <span>00</span>
+        <div>
+        {props.user ?
+            (<button onClick={likesOrDislikes}>{props?.likes.includes(props.user.id) ?
+                
+            <span style={{color: "red", fontSize: 30}}> <FavoriteIcon/> </span> :
+            <span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>}</button>)
+
+            : (<span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>)}
+        <h3 style={{color: "black", fontSize: 30}}>{props?.likes.length}</h3>
+        </div>
         </>
     );
 }
@@ -31,11 +42,15 @@ function Likes(props){
 const mapStateToProps = (state) => {
     return {
         user: state.userReducer.user,
-        itineraries: state.itinerariesReducer.itineraries
     }
 }
 
-export default connect(mapStateToProps, null)(Likes);
+const mapDispatchToProps = {
+    likesAndDislikes: itinerariesActions.likesAndDislikes,
+    fetchOneItinerary: itinerariesActions.fetchOneItinerary,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Likes);
 
 /* import React, {useState} from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -87,7 +102,19 @@ const Likes = (props) => {
     } */
    /*  console.log(props);
 
-    return (
+   /* const likeDislike = async() =>{
+        const token = localStorage.getItem("token")
+        console.log(props)
+        console.log(token)
+        await axios.put(`http://localhost:4000/api/likes&dislikes/${props.id}`,{},{
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(response => console.log(response))
+    } */
+    
+   /*  return (
         <>
         <div>
             <div>
@@ -98,9 +125,8 @@ const Likes = (props) => {
             </div>
         </div>
         </>
-    );
-}
- */
+    ); */
+
 /* const mapStateToProps = (state) => {
     return {
         user: state.userReducer.user,

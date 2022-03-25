@@ -11,8 +11,9 @@ import Likes from './Likes';
 import ActivitiesCards from '../components/Activities';
 import {connect} from 'react-redux';
 import activitiesActions from '../redux/actions/activitiesActions';
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
-const PriceItinerary = ({itinerary}) => {
+const PriceItinerary = ({itinerary, reload, setReload}) => {
     const [expanded, setExpanded] = React.useState(false);
 
     const ExpandMore = styled((props) => {
@@ -51,8 +52,8 @@ const PriceItinerary = ({itinerary}) => {
 
           <div className="body__buttons">
             <div className="body__button">
-              <Likes likes = {itinerary.likes} id={itinerary._id}/>
-              <i>Likes: {itinerary.likes}</i>
+              <Likes likes = {itinerary.likes} id={itinerary._id} setReload={setReload} reload={reload}/>
+              <i>Likes: {itinerary?.likes.length}</i>
               <box-icon
                 color="red"
                 type="solid"

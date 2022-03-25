@@ -48,7 +48,7 @@ Router.route('/verify/:uniqueString')
 Router.route('/auth/signInToken')
 .get(passport.authenticate('jwt',{session:false}), verifyToken)
 
-Router.route('/likes&dislikes/:id')
+Router.route('/itineraries/likes&dislikes/:id')
 .put(passport.authenticate('jwt',{session:false}), likesAndDislikes)
 
 Router.route('/activities')

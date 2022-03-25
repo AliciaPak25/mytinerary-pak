@@ -77,27 +77,21 @@ const itineraryController = {
 
         const id = req.params.id;
         const user = req.user.id;
-        let itineraries;
 
-        console.log(id);
-        console.log(user);
-        
-        try{
-            itineraries = await ItineraryControl.findOne({_id:id})
+        await ItineraryControl.findOne({_id:id})
 
+        .then((itineraries) =>{
             if (itineraries.likes.includes(user)) {
                 ItineraryControl.findOneAndUpdate({_id:id}, {$pull: {likes: user}}, {new: true})
-                .then(response => res.json({success: true, response: response.likes}))
-                .catch(error => console.log(error))
+                .then((unliked) => res.json({success: true, response: unliked.likes}))
+                .catch((error) => console.log(error))
             }else{
                 ItineraryControl.findOneAndUpdate({_id:id}, {$push: {likes: user}}, {new: true})
-                .then(response => res.json({success: true, response: response.likes}))
-                .catch(error => console.log(error))
+                .then((liked) => res.json({success: true, response: liked.likes}))
+                .catch((error) => console.log(error))
             }
-        }catch(err){
-            error = err
-            res.json({success: false, response: error})
-        }
+        })
+        .catch((error) => res.json({success: false, response: error}))
     }
 } 
 module.exports = itineraryController
