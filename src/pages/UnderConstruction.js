@@ -46,7 +46,7 @@ function ActionAreaCard(props) {
       <HeroUC/>
       <div className='divCardDetail'>
     
-    <Card className='CardDetail'>
+{/*     <Card className='CardDetail'>
       <CardActionArea className='CardActionArea' key={props.city._id}>
       <CardContent className='CardContent'>
       <CardMedia
@@ -64,7 +64,12 @@ function ActionAreaCard(props) {
           </Typography>
         </CardContent>   
       </CardActionArea>
-    </Card>
+    </Card> */}
+
+    <div className='backgroundCardDetail'>
+      <img src={process.env.PUBLIC_URL+`/assets/${props.city.image}`} alt="hello" className='photoDetail'/>
+      <div></div>
+    </div>
     </div> 
 
     {props.itineraries.length > 0 ? 

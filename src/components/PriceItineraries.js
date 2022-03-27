@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -12,9 +12,22 @@ import ActivitiesCards from '../components/Activities';
 import {connect} from 'react-redux';
 import activitiesActions from '../redux/actions/activitiesActions';
 import itinerariesActions from '../redux/actions/itinerariesActions';
+import commentsActions from '../redux/actions/commentsActions';
+import Comments from './Comments';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import TextField from '@mui/material/TextField';
+import swal from 'sweetalert';
 
-const PriceItinerary = ({itinerary, reload, setReload}) => {
+
+const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment, modifyComment, user}) => {
     const [expanded, setExpanded] = React.useState(false);
+    const [itineraries, setItineraries] = useState()
+    const [inputText, setInputText] = useState()
+    const [modify, setModify] = useState()
 
     const ExpandMore = styled((props) => {
         const { expand, ...other } = props;
@@ -35,6 +48,57 @@ const PriceItinerary = ({itinerary, reload, setReload}) => {
     for (let index = 0; index < itinerary.price; index++) {
         price.push(index)
         
+    }
+
+    async function newComments(event) {
+      const commentData = {
+          itinerary: itinerary._id,
+          comment: inputText
+      }
+      await addComment(commentData)
+          .then(response => setItineraries(response.data.response.newComment), setInputText(""))
+      setReload(!reload)
+    }
+
+    function deletingComment(event) {
+      console.log(event.target.id)
+      swal({
+        title: "Are you sure you want to delete this comment?",
+        text: "Once deleted, this action can't be undone!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Your comment has been removed!", {
+            icon: "success",
+          })
+          var response = deleteComment(event.target.id)
+          if(response){
+            setItineraries(response.data.response.deleteComment)
+          }
+          setReload(true)
+        } else {
+          swal("Your comment is safe!");
+        }
+      });
+  }
+
+    function modifiedComment(event) {
+      const commentData = {
+          commentId: event.target.id,
+          comment: modify
+      }
+      console.log(commentData);
+      modifyComment(commentData)
+      
+        /* .then(response => setItineraries(response.data.response.modifiedComment)) */
+      /* setReload(!reload) */
+    }
+
+    const userNotLogued = () => {
+      swal("Sorry!", "You have to be logued in in order to comment!");
     }
 
     return(
@@ -71,7 +135,6 @@ const PriceItinerary = ({itinerary, reload, setReload}) => {
             </div>
             <div className="body__button">
                 <div className='d-flex'>{price.map(pay=> <PaidIcon className='text-success'/>)}</div>
-            {/*   <i><PaidIcon/>{"💰".repeat(parseInt(itinerary.price))}</i> */}
               <box-icon
                 color="green"
                 name="share-alt"
@@ -94,7 +157,46 @@ const PriceItinerary = ({itinerary, reload, setReload}) => {
               </ExpandMore>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <ActivitiesCards id={itinerary._id} />
-                  <h3>{itinerary.comments}</h3>
+                  
+                  {itinerary.comments.map(comment=>
+                    <Comments itinerary={itinerary} comment={comment} key={comment._id} setReload={setReload} reload={reload} deletingComment={deletingComment} modifiedComment={modifiedComment} setModify={setModify}/>
+                  )}
+                  
+                  {user ?
+                        (<CardContent>
+                            <Typography variant="h5" component="div">
+                                LEAVE YOUR COMMENT
+                            </Typography>
+                            <Typography variant="body2">
+                            <TextareaAutosize
+                                type="text"
+                                maxRows={4}
+                                aria-label="maximum height"
+                                placeholder="Write a comment"
+                                onChange={(event) => setInputText(event.target.value)}
+                                value={inputText}
+                                style={{ width: 200 }}
+                            />
+                            </Typography>
+                            <CardActions>
+                                <Button onClick={newComments} size="small">Add comment</Button>
+                            </CardActions>
+                        </CardContent>)
+                            :
+                            <Card sx={{ minWidth: 275 }}>
+                            <Typography variant="body2">
+                            <TextField
+                                disabled
+                                id="outlined-disabled"
+                                defaultValue="Please, log in to comment!"
+                              />
+                            </Typography>
+                            <CardActions>
+                            <Button onClick={userNotLogued} size="small">You cannot comment</Button>
+                            </CardActions>
+                            </Card> 
+                    
+                    }
                   
                   <Button variant="contained" color="success" onClick={handleExpandClick}>
                       View Less <ExpandMoreIcon />
@@ -109,12 +211,16 @@ const PriceItinerary = ({itinerary, reload, setReload}) => {
 const mapStateToProps = (state) => {
   return {
       activities: state.activitiesReducer.activities,
+      user: state.userReducer.user
   }
 }
 
 const mapDispatchToProps = {
   getActivitiesByItinerary: activitiesActions.getActivitiesByItinerary,
   fetchActivities: activitiesActions.fetchActivities,
+  addComment: commentsActions.addComment,
+  deleteComment: commentsActions.deleteComment,
+  modifyComment: commentsActions.modifyComment
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(PriceItinerary);
+export default connect(mapStateToProps, mapDispatchToProps)(PriceItinerary);

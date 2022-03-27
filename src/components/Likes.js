@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import userActions from '../redux/actions/userActions';
 import {useParams} from 'react-router-dom';
+import swal from 'sweetalert';
 
 function Likes(props){
 
@@ -23,6 +24,10 @@ function Likes(props){
 
         props.setReload(!props.reload)
     }
+
+    const userNotLogued = () => {
+        swal("Sorry!", "You have to be logued in to like this itinerary!");
+      }
     return(
         <>
         <div>
@@ -32,7 +37,7 @@ function Likes(props){
             <span style={{color: "red", fontSize: 30}}> <FavoriteIcon/> </span> :
             <span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>}</button>)
 
-            : (<span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>)}
+            : (<button onClick={userNotLogued}><span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span></button>)}
         <h3 style={{color: "black", fontSize: 30}}>{props?.likes.length}</h3>
         </div>
         </>

@@ -110,14 +110,14 @@ const SignUp = (props) => {
     const handleSubmit = async (event) => {
       event.preventDefault()
       await props.signUpUser(newUser, navigate)
-     
-      /* setNewUser({firstName: '',
+      
+      .then(setNewUser({firstName: '',
       lastName: '',
       email: '',
       password: '',
       photoURL: '', 
       country: '',
-      from: "form-SignUp"}) */
+      from: ""}))
     }
 
     return (
