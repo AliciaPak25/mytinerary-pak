@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -21,11 +21,11 @@ import Typography from '@mui/material/Typography';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import TextField from '@mui/material/TextField';
 import swal from 'sweetalert';
+import {useParams} from 'react-router-dom';
 
-
-const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment, modifyComment, user}) => {
+const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment, deleteComment, user, itineraries, setItineraries}) => {
+    const {id} = useParams()
     const [expanded, setExpanded] = React.useState(false);
-    const [itineraries, setItineraries] = useState()
     const [inputText, setInputText] = useState()
     const [modify, setModify] = useState()
 
@@ -49,7 +49,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment
         price.push(index)
         
     }
-
+    
     async function newComments(event) {
       const commentData = {
           itinerary: itinerary._id,
@@ -61,7 +61,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment
     }
 
     function deletingComment(event) {
-      console.log(event.target.id)
+      console.log(event.target.id);
       swal({
         title: "Are you sure you want to delete this comment?",
         text: "Once deleted, this action can't be undone!",
@@ -74,27 +74,22 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment
           swal("Your comment has been removed!", {
             icon: "success",
           })
-          var response = deleteComment(event.target.id)
-          if(response){
-            setItineraries(response.data.response.deleteComment)
-          }
-          setReload(true)
+          deleteComment(event.target.id).then(res=> {
+            if(res.data.success){
+              setItineraries(res.data.response.deleteComment.comments)
+              setReload(!reload)
+            }
+          })
         } else {
           swal("Your comment is safe!");
         }
       });
+      
   }
 
-    function modifiedComment(event) {
-      const commentData = {
-          commentId: event.target.id,
-          comment: modify
-      }
-      console.log(commentData);
-      modifyComment(commentData)
-      
-        /* .then(response => setItineraries(response.data.response.modifiedComment)) */
-      /* setReload(!reload) */
+    async function modifiedComment(event) {
+      await modifyComment(event.target.id, modify)
+      setReload(!reload)
     }
 
     const userNotLogued = () => {
@@ -158,7 +153,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <ActivitiesCards id={itinerary._id} />
                   
-                  {itinerary.comments.map(comment=>
+                  {itinerary?.comments.map(comment=>
                     <Comments itinerary={itinerary} comment={comment} key={comment._id} setReload={setReload} reload={reload} deletingComment={deletingComment} modifiedComment={modifiedComment} setModify={setModify}/>
                   )}
                   
@@ -211,7 +206,8 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, deleteComment
 const mapStateToProps = (state) => {
   return {
       activities: state.activitiesReducer.activities,
-      user: state.userReducer.user
+      user: state.userReducer.user,
+      itineraries: state.itinerariesReducer.itineraries
   }
 }
 
@@ -220,7 +216,7 @@ const mapDispatchToProps = {
   fetchActivities: activitiesActions.fetchActivities,
   addComment: commentsActions.addComment,
   deleteComment: commentsActions.deleteComment,
-  modifyComment: commentsActions.modifyComment
+  modifyComment: commentsActions.modifyComment,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PriceItinerary);

@@ -59,9 +59,9 @@ function Snack(props) {
             {(typeof props.snackbar.message) === "string" ?
               (<p>{props.snackbar.message}</p>) :
               <ul>
-                {/* {props.snackbar.message.map(message =>
+                {props.snackbar.message.map(message =>
                   <li>{message.message}</li>
-                )} */}
+                )}
               </ul>
             }
             <IconButton className={classes.icon} size="small" aria-label="close" color="inherit" onClick={handleClose}>

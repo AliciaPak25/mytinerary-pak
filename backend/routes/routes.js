@@ -67,9 +67,10 @@ Router.route('/activities/itinerary/:itineraryId')
 
 Router.route('/itineraries/comments')
 .post(passport.authenticate('jwt', {session: false}), addComment)
-.put(passport.authenticate('jwt', {session: false}), modifyComment)
+
 
 Router.route('/itineraries/comments/:id')
 .post(passport.authenticate('jwt', {session: false}), deleteComment)
+.put(passport.authenticate('jwt', {session: false}), modifyComment)
 
 module.exports = Router

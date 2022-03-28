@@ -14,23 +14,25 @@ import Button from '@mui/material/Button';
 import PaidIcon from '@mui/icons-material/Paid';
 import PriceItinerary from "./PriceItineraries";
 import Likes from "./Likes";
+import commentsActions from "../redux/actions/commentsActions";
 
 function CardItinerary(props) {
     let {id} = useParams()
     const [reload, setReload] = useState(false)
+    const [itineraries, setItineraries] = useState()
 
     useEffect(()=>{
         props.getItineraryByCity(id)
+        .then(response => setItineraries(response.data.response.itineraries))
     },[reload])
 
-  
-  return (
-    
+
+    return (
     <div className="App">
-        {props.itineraries?.map(itinerary=> <PriceItinerary setReload={setReload} reload={reload} itinerary={itinerary}/>)}
+        {props.itineraries?.map(itinerary=> <PriceItinerary setReload={setReload} reload={reload} itinerary={itinerary} itineraries={itineraries} setItineraries={setItineraries}/>)}
         
     </div>
-  );
+    );
 }
 
 const mapStateToProps = (state) => {

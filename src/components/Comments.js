@@ -41,7 +41,7 @@ const Comments = (props) => {
                         <CardContent>
                         <img className="userPhotoComment" src={comment.userId?.photoURL} alt="User account avatar" />
                             <Typography variant="h5" component="div">
-                                {comment.userId?.firstName+comment.userId?.lastName}
+                                {comment.userId?.firstName+ " " +comment.userId?.lastName}
                             </Typography>
                             <Typography variant="body2">
                                 {comment.comment}
@@ -52,8 +52,9 @@ const Comments = (props) => {
 
                         <Card sx={{ minWidth: 275 }}>
                         <CardContent>
+                        <img className="userPhotoComment" src={comment.userId?.photoURL} alt="User account avatar" />
                             <Typography variant="h5" component="div">
-                                {comment.userId.photoURL+comment.userId.firstName+comment.userId.lastName}
+                                {comment.userId.firstName+ " " +comment.userId.lastName}
                             </Typography>
                             <Typography variant="body2">
                             <TextareaAutosize
@@ -68,8 +69,6 @@ const Comments = (props) => {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button id={comment._id} onClick={modifiedComment} size="small">Edit</Button>
-                            <Button id={comment._id} onClick={deletingComment} size="small">Delete</Button>
                         </CardActions>
                         </Card>
                     }

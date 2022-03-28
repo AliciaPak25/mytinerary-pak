@@ -38,7 +38,7 @@ function Likes(props){
             <span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>}</button>)
 
             : (<button onClick={userNotLogued}><span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span></button>)}
-        <h3 style={{color: "black", fontSize: 30}}>{props?.likes.length}</h3>
+        {/* <h3 style={{color: "black", fontSize: 30}}>{props?.likes.length}</h3> */}
         </div>
         </>
     );

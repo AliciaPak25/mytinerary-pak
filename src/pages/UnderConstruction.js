@@ -68,7 +68,14 @@ function ActionAreaCard(props) {
 
     <div className='backgroundCardDetail'>
       <img src={process.env.PUBLIC_URL+`/assets/${props.city.image}`} alt="hello" className='photoDetail'/>
-      <div></div>
+      <div className='nameOfCityDetail'>
+      <Typography gutterBottom variant="h5" component="div" fontSize={50}>
+          {props.city.name}
+          </Typography>
+          <Typography variant="body2" fontSize={40}>
+          {props.city.country}
+          </Typography>
+      </div>
     </div>
     </div> 
 

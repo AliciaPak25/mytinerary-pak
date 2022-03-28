@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import "../styles/stylesActivities.css"
 
 const ActivitiesCards = (props) => {
     
@@ -26,7 +27,7 @@ const ActivitiesCards = (props) => {
               <div class="card text-white cardActivity">
               <img src={process.env.PUBLIC_URL+`/assets/activities/${activity.activityImage}`} class="card-img imageActivity" alt="activity"/>
               <div class="card-img-overlay">
-                <h5 class="card-title">{activity.activityName}</h5>
+                <h5 class="card-title nameOfActivity">{activity.activityName}</h5>
               </div>
               </div>
             ): <CircularIndeterminate/>}
