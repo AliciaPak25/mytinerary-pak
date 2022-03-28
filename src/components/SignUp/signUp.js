@@ -117,7 +117,7 @@ const SignUp = (props) => {
       password: '',
       photoURL: '', 
       country: '',
-      from: ""}))
+      from: "form-SignUp"}))
     }
 
     return (
@@ -148,7 +148,7 @@ const SignUp = (props) => {
       autoComplete="on"
       className='inputsSU'
     > 
-      <TextField name='firstName' id="outlined-basic" label="First Name" variant="outlined" onChange={handleInputChange} />
+      <TextField name='firstName' value={newUser.firstName} id="outlined-basic" label="First Name" variant="outlined" onChange={handleInputChange} />
       <TextField id="outlined-name" label="Last Name" name='lastName' onChange={handleInputChange}/>
       <TextField id="outlined-textarea"  label="Email Address" placeholder="example@email.com" multiline name='email' onChange={handleInputChange} />
       <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">

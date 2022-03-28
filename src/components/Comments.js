@@ -17,15 +17,19 @@ import '../styles/stylesComments.css'
 const Comments = (props) => {
     const {id} = useParams()
     const [reload, setReload] = useState(false)
+    const [editing, setEditing] = useState(false)
     const {comment, itinerary, deletingComment, modifiedComment, setModify} = props
 
 
-
-   /*  async function deleteComment(event) {
-        await props.deleteComment(event.target.id)
-        setReload(!reload)
+ 
+  const modifyingComment = (event) => {
+    if(editing){
+      setEditing(false)
+      modifiedComment(event)
+    }else{
+      setEditing(true)
     }
- */
+  }
     
   
     const userNotLogued = () => {
@@ -57,18 +61,31 @@ const Comments = (props) => {
                                 {comment.userId.firstName+ " " +comment.userId.lastName}
                             </Typography>
                             <Typography variant="body2">
-                            <TextareaAutosize
-                                type="text"
-                                maxRows={4}
-                                aria-label="maximum height"
-                                placeholder="Comment"
-                                defaultValue={comment.comment}
-                                onChange={(event) => setModify(event.target.value)}
-                                style={{ width: 200 }}
-                            />
+                            {!editing ? 
+                            (
+                            <Typography variant="body2">
+                                {comment.comment}
+                            </Typography>
+                            ) :
+                              <TextareaAutosize
+                              type="text"
+                              maxRows={4}
+                              aria-label="maximum height"
+                              placeholder="Comment"
+                              defaultValue={comment.comment}
+                              onChange={(event) => setModify(event.target.value)}
+                              style={{ width: 200 }}
+                              />
+                            }
                             </Typography>
                         </CardContent>
                         <CardActions>
+                            <Button id={comment._id} onClick={modifyingComment} size="small">{!editing ? ("Edit") : "Confirm"}</Button>
+                            {editing ?
+                            (<Button id={comment._id} onClick={()=> setEditing(false)} size="small">Cancel</Button>) :
+                            <Button id={comment._id} onClick={deletingComment} size="small">Delete</Button>
+                          }
+                            
                         </CardActions>
                         </Card>
                     }
