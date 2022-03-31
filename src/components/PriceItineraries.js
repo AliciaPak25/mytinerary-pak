@@ -22,6 +22,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import TextField from '@mui/material/TextField';
 import swal from 'sweetalert';
 import {useParams} from 'react-router-dom';
+import '../styles/stylesItineraries.css'
 
 const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment, deleteComment, user, itineraries, setItineraries}) => {
     const {id} = useParams()
@@ -111,8 +112,8 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
 
           <div className="body__buttons">
             <div className="body__button">
-              <Likes likes = {itinerary.likes} id={itinerary._id} setReload={setReload} reload={reload}/>
               <i>Likes: {itinerary?.likes.length}</i>
+              <Likes likes = {itinerary.likes} id={itinerary._id} setReload={setReload} reload={reload}/>
               <box-icon
                 color="red"
                 type="solid"
@@ -193,7 +194,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
                     
                     }
                   
-                  <Button variant="contained" color="success" onClick={handleExpandClick}>
+                  <Button variant="contained" color="success" onClick={handleExpandClick} className='viewLess'>
                       View Less <ExpandMoreIcon />
                   </Button>
                   

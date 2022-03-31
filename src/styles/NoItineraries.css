@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.containerNoItineraries{
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* card No Itineraries */
+.NoItinerariescard{
+    width: 70vw;
+    background: #26007e;
+    border-radius: 15px;
+    box-shadow: 1px 5px 60px 0px #100a886b;
+   }
+   
+   .NoItinerariescard .card-border-top {
+    width: 60%;
+    height: 3%;
+    background: #2d23fa;
+    margin: auto;
+    border-radius: 0px 0px 15px 15px;
+   }
+   
+   .NoItinerariescard span {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    font-size: 2rem;
+   }
+   
+   .NoItinerariescard .job {
+    font-weight: 400;
+    color: white;
+    display: block;
+    text-align: center;
+    padding-top: 3px;
+   }
+   
+   .NoItinerariescard .img {
+/*     width: 70px;
+    height: 80px;
+    border-radius: 15px; */
+    /* margin: auto;
+    margin-top: 25px; */
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+   }
+.noPerson{
+    border-radius: 15px;
+    width: 50%;
+
+}
+   .NoItinerariescard button {
+    padding: 8px 25px;
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    border: none;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    background: #2d23fa;
+    color: white;
+    font-weight: 600;
+   }
+   
+   .NoItinerariescard button:hover {
+    background: #2117d6;
+   }

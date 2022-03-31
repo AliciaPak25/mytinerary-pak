@@ -20,8 +20,6 @@ const Comments = (props) => {
     const [editing, setEditing] = useState(false)
     const {comment, itinerary, deletingComment, modifiedComment, setModify} = props
 
-
- 
   const modifyingComment = (event) => {
     if(editing){
       setEditing(false)
@@ -30,11 +28,7 @@ const Comments = (props) => {
       setEditing(true)
     }
   }
-    
-  
-    const userNotLogued = () => {
-      swal("Sorry!", "You have to log in in order to comment!");
-    }
+
 
     return(
      <div>
@@ -111,34 +105,4 @@ const mapDispatchToProps = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
 
-  {/* <div class="card mb-3 cardDetail"  >
-        <div class="accordion" id={itinerary?.name}>
-          <div class="accordion-item"> */}
-            {/* <h2 class="accordion-header " id={"heading" + itinerary?.name}>
-              <button class="accordion-button collapsed acordion " type="button" data-bs-toggle="collapse" data-bs-target={"#" + place?.name.replace(/ /g, "").slice(0, 5)} aria-expanded="false" aria-controls={place?.name.replace(/ /g, "").slice(0, 5)}>
-                Comentarios
-                <span class="material-icons ml-auto arrow collapsed " data-bs-toggle="collapse" aria-controls={place?.name.replace(/ /g, "").slice(0, 5)} data-bs-target={"#" + place?.name.replace(/ /g, "").slice(0, 5)}>
-                  keyboard_arrow_down
-                </span>
-              </button>
-            </h2> */}
-          {/*   <div id={place?.name.replace(/ /g, "").slice(0, 5)} class="accordion-collapse collapse " aria-labelledby={"heading" + place?.name} data-bs-parent={"#" + place?.name}>
-              <div class="accordion-body  "> */}
-
- {/*   {props.user ?
-                  <div class="card cardComments">
-                    <div class="card-header">
-                      DEJANOS TU COMENTARIO
-                    </div>
-                    <div class="card-body ">
-                      <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
-                      <button onClick={cargarComentario} class="btn btn-primary">Cargar</button>
-                    </div>
-                  </div> :
-                  <h1>Realiza singIn y dejanos tu comentario</h1>
-                } */}
-             {/*  </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+//word-break: break-all;

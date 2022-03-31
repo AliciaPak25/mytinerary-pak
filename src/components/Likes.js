@@ -7,17 +7,11 @@ import itinerariesActions from '../redux/actions/itinerariesActions';
 import userActions from '../redux/actions/userActions';
 import {useParams} from 'react-router-dom';
 import swal from 'sweetalert';
+import { ClassNames } from '@emotion/react';
 
 function Likes(props){
 
     const {id} = useParams()
-    /* const [itinerary, setItinerary] = useState() */
-    
-
-   /*  useEffect(()=>{
-        props.fetchOneItinerary(id)
-            .then(response => setItinerary(response.data.response.itinerary))
-    }, [reload]) */
     
     async function likesOrDislikes() {
         await props.likesAndDislikes(props.id)
@@ -32,13 +26,12 @@ function Likes(props){
         <>
         <div>
         {props.user ?
-            (<button onClick={likesOrDislikes}>{props?.likes.includes(props.user.id) ?
+            (<button onClick={likesOrDislikes} className='likesButton'>{props?.likes.includes(props.user.id) ?
                 
             <span style={{color: "red", fontSize: 30}}> <FavoriteIcon/> </span> :
             <span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span>}</button>)
 
-            : (<button onClick={userNotLogued}><span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span></button>)}
-        {/* <h3 style={{color: "black", fontSize: 30}}>{props?.likes.length}</h3> */}
+            : (<button onClick={userNotLogued} className='likesButton'><span style={{fontSize: 30}}> <FavoriteBorderIcon/> </span></button>)}
         </div>
         </>
     );

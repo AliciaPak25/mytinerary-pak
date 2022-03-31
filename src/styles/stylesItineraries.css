@@ -100,3 +100,26 @@
       border: 1px solid #eaea;
     }
   }
+
+.viewLess{
+  margin-bottom: 1em !important;
+}
+
+/* button Likes */
+.likesButton {
+  border: none;
+  background: rgb(255, 255, 255);
+  color: seagreen;
+  font-style: italic;
+  padding: 10px;
+  padding-right: 14px;
+  padding-left: 12px;
+}
+
+.likesButton:hover {
+  border: 1px solid seagreen;
+  border-radius: 20em;
+  background-color: seagreen;
+  color: white;
+  border: 1px solid  seagreen;
+}

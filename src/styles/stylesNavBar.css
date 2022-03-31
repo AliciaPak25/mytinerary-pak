@@ -18,3 +18,32 @@
     color: lightgray;
     margin-right: 1em;
 }
+.mytinerary{
+    padding: 0.2em;
+    border-radius: 0.5em;
+}
+.mytinerary:hover{
+    background-color: rgba(20, 236, 243, 0.163);
+    border: 1px solid hsl(216, 50%, 16%);
+    padding: 0.5em;
+    border-radius: 1em;
+}
+.navBackground{
+    background-color: #11101D !important;
+}
+.lettercolorsNav{
+    color: lightgray !important;
+}
+.closeIcon{
+    filter: invert(1);
+    border: 1px solid black;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.imgBorderSign{
+    border-radius: 50%;
+}

@@ -47,7 +47,6 @@ console.log(props)
 
         </div>
         <div className='containerCard'>
-    {/* { !isLoaded ? (<CircularIndeterminate/>) : */}
 
     {props.filteredCities.length === 0 ? (<ActionAreaCard/>) :
         props.filteredCities?.map(city=>

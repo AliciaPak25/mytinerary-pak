@@ -17,7 +17,6 @@ import GoogleSignIn from './GoogleSignIn';
 
 
 const SignIn = (props) => {
-    
     let navigate = useNavigate()
 
     const [values, setValues] = React.useState({
@@ -61,15 +60,14 @@ const SignIn = (props) => {
 
     return (
         <div className='divContainerSignIn'>
-
           <div className='textSignIn'>
             <h1>Welcome Back</h1>
             <p>It's nice to see you again!</p>
             <p>Log in to your account</p>
             </div>
 
-            <form className='formContainer registerContainer' onSubmit={handleSubmit}>
-                        <Box
+            <form className='formLogIN' onSubmit={handleSubmit}>
+                <Box
                   component="form"
                   sx={{
                     '& > :not(style)': { m: 1, width: '25ch' },
@@ -103,12 +101,14 @@ const SignIn = (props) => {
                     />
                 </FormControl>
                         </Box>
-                  
-                <button type='submit'>Log In</button>
+                <button type='submit' className='buttonLogIn'> LOG IN
+                  <span></span>
+                </button>
                 <p>or</p>
                 <GoogleSignIn/>
                 <div>Not a member yet? <LinkRouter to="/signup">Sign up now!</LinkRouter></div>
             </form>
+       
         </div>
     );
 }

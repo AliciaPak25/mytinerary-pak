@@ -41,9 +41,6 @@
 }
 .formContainer{
     width: 100%;
-    /* height: 100vh;
-    width: 100%;
-    z-index: 0; */
 }
 .CardContentForm{
     display: flex;
@@ -68,9 +65,8 @@
      justify-content: center;
      align-items: center;
 }
-/* button */
-/* From cssbuttons.io by @westitan */
-button {
+/* button Sign Up*/
+.button {
     position: relative;
     padding: 19px 36px;
     display: block;
@@ -87,9 +83,9 @@ button {
     font-family: Arial;
     letter-spacing: 8px;
     z-index: 1;
-   }
-   
-   button .liquid {
+    }
+
+.button .liquid {
     position: absolute;
     top: -80px;
     left: 0;
@@ -98,10 +94,10 @@ button {
     background: #49c5ff;
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
     transition: .5s;
-   }
-   
-   button .liquid::after,
-   button .liquid::before {
+}
+
+.button .liquid::after,
+.button .liquid::before {
     content: '';
     width: 200%;
     height: 200%;
@@ -110,46 +106,34 @@ button {
     left: 50%;
     transform: translate(-50%, -75%);
     background: #fff;
-   }
-   
-   button .liquid::before {
+}
+
+.button .liquid::before {
     border-radius: 45%;
     background: rgb(22, 56, 121);
     animation: animate 5s linear infinite;
-   }
-   
-   button .liquid::after {
+}
+
+.button .liquid::after {
     border-radius: 40%;
     background: rgba(30, 79, 184, 0.5);
     animation: animate 10s linear infinite;
-   }
-   
-   button:hover .liquid {
-    top: -120px;
-   }
-   
-   @keyframes animate {
-    0% {
-     transform: translate(-50%, -75%) rotate(0deg);
-    }
-   
-    100% {
-     transform: translate(-50%, -75%) rotate(360deg);
-    }
-   }
-/* fin button */
-/* sign in */
-/* .divSignIn{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
 }
-.formSignIn{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
+
+.button:hover .liquid {
+    top: -120px;
+}
+
+@keyframes animate {
+    0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+    }
+
+    100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
 .divContainerSignIn{
     background-color: rgb(14, 53, 88);
     height: 100vh !important;
@@ -158,15 +142,19 @@ button {
     font-family: 'Montserrat', sans-serif;
 }
 .textSignIn{
-    background-color: rgb(56, 142, 240) !important;
-    width: 40%;
-    border-radius: 1em;
+    background-image: url(./imagesSign/login.jpg) !important;
+    background-size: cover;
+    object-fit: cover;
+    color: hsl(216, 50%, 16%);
+    height: 100% !important;
+    width: 45%;
     padding: 1em;
     text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 
 .buttonsocial :nth-child(1){
@@ -191,23 +179,93 @@ button {
 }
 
 /* card sign up*/
-  
+
   /* media query to use */
-  @media screen and (min-width: 800px) {
-    .card {
-      display: flex;
-      width: 100%;
-      border-radius: 10px;
-      border: none;
-    }
-    .card-image {
-      border-radius: 5px 0px 0px 5px;
-      border: none;
-    }
-    .card-inner {
-      flex: 3px;
-    }
-  }
+@media screen and (min-width: 800px) {
+.card {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+.card-image {
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+}
+.card-inner {
+    flex: 3px;
+}
+}
 
+.formLogIN{
+    background-color: white !important;
+    width: 60%;
+    padding: 1em;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
 
- 
+/* button Sign In */
+.buttonLogIn {
+    border: none;
+    display: block;
+    position: relative;
+    padding: 0.7em 2.4em;
+    font-size: 18px;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: royalblue;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.buttonLogIn span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid royalblue;
+}
+
+.buttonLogIn span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+}
+
+.buttonLogIn:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: royalblue;
+}
+
+.buttonLogIn:hover {
+    color: white;
+}
+
+.buttonLogIn:active span::before {
+    background: #2751cd;
+}
+@media (max-width: 1000px){
+    .textSignIn{
+        display: none;
+    }
+}

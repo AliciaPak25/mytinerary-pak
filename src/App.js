@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useEffect} from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import ResponsiveAppBar from "./components/SideNavbar";
+import SideNavbar from './components/SideNavbar';
 import Cities from './pages/cities';
 import Home from './pages/Home';
 import Footer from './components/Footer';
@@ -26,8 +26,8 @@ function App(props) {
   return (
     <div className="App">
       <BrowserRouter>
-      <ResponsiveAppBar /> 
-      {/* <Container/> */}
+      <SideNavbar /> 
+      
       <Snack/>
         <Routes>
         <Route path='*' element={<Home/>}/> 

@@ -1,5 +1,6 @@
 .divCall{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: white;
     justify-content: space-evenly;
@@ -8,18 +9,29 @@
     padding-top: 1em;
     padding-bottom: 2em;
     border-bottom: 2px solid rgb(44, 43, 43);
+    background-color: hsl(216, 50%, 16%);
 }
 .imgCall{
     width: 10em;
     border-radius: 5em;
 }
 .divPe{
-  display: flex;
-  flex-direction: column;
-  background-color:rgba(144, 246, 250, 0.171);
+  background-color:rgba(56, 219, 248, 0.212);
   border-radius: 1em;
   padding: 1em;
+  margin-bottom: 1em;
+  width: 80%;
+  height: 10%;
 }
 .notUnderlined{
   text-decoration: none !important;
+}
+.CallP{
+  color: white;
+}
+.divWithGif{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
 }

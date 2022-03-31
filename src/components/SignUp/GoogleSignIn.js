@@ -18,9 +18,9 @@ function GoogleSignIn(props) {
 
   return (
     <GoogleLogin
-    className="buttonsocial"
+    className="buttonsocial buttonGoogle"
       clientId="971845975096-a3gu832l2esbdv2dmp2iktvql4t5imot.apps.googleusercontent.com"
-      buttonText="Log in with Google"
+      buttonText="LOG IN WITH GOOGLE"
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       cookiePolicy={'single_host_origin'}

@@ -13,16 +13,15 @@ function Container(props) {
   
 
   return (
-    <>
+    <div className="container">
         {!props.user ?
-        (<img src={'https://png.pngitem.com/pimgs/s/24-248235_user-profile-avatar-login-account-fa-user-circle.png'} alt="user" width={30}/>) :
-          <img src={props.user.photoURL} alt="google-profile-picture" width={50}/>
+        (<img src={'https://png.pngitem.com/pimgs/s/24-248235_user-profile-avatar-login-account-fa-user-circle.png'} alt="user" width={50} className='imgBorderSign'/>) :
+          <img src={props.user.photoURL} alt="google-profile-picture" width={50} className='imgBorderSign'/>
         }
       {props.user ? (
         <>
           <h1>
-            Connected user {props.user.firstName && props.user.lastName} from{" "}
-            {props.user.from}
+            {props.user.firstName +" "+ props.user.lastName}
           </h1>
           <div
             style={{ display: "flex", justifyContent: "center", width: "100%" }}
@@ -41,15 +40,7 @@ function Container(props) {
         <h1>There is no user connected</h1>
       )}
       {}
-      <div className="card bg-light">
-        {/* <BrowserRouter>
-						<Routes>
-							{!props.user &&<Route path="/signIn" element={<SignIn />} />}
-							{!props.user &&<Route path="/signUp" element={<SignUp />} />}
-						</Routes>
-					</BrowserRouter> */}
-      </div>
-    </>
+    </div>
   );
 }
 const mapStateToProps = (state) => {
