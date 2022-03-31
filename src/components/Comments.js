@@ -73,11 +73,11 @@ const Comments = (props) => {
                             }
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                            <Button id={comment._id} onClick={modifyingComment} size="small">{!editing ? ("Edit") : "Confirm"}</Button>
+                        <CardActions className='commentsButtons'>
+                            <Button id={comment._id} onClick={modifyingComment} size="small" className='commentButton'>{!editing ? ("Edit") : "Confirm"}</Button>
                             {editing ?
-                            (<Button id={comment._id} onClick={()=> setEditing(false)} size="small">Cancel</Button>) :
-                            <Button id={comment._id} onClick={deletingComment} size="small">Delete</Button>
+                            (<Button id={comment._id} onClick={()=> setEditing(false)} size="small" className='commentButton'>Cancel</Button>) :
+                            <Button id={comment._id} onClick={deletingComment} size="small" className='commentButton'>Delete</Button>
                           }
                             
                         </CardActions>

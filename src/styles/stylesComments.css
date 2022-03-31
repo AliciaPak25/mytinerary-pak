@@ -2,3 +2,55 @@
     width: 5em;
     border-radius: 100%;
 }
+
+/*comment buttons */
+.commentsButtons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commentButton {
+    --color: #00A97F;
+    --color2: white;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid seagreen !important;
+    transition: .5s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 300;
+    font-size: 17px;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    color: seagreen !important;
+}
+.commentButton::before {
+    content: '';
+    display: block;
+    height: 110%;
+    width: 310%;
+    transform: translate(0, -50%);
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    z-index: -1;
+    transition: .7s;
+    background: -moz-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+    background: -webkit-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+    background: linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+}
+.commentButton:hover::before {
+    left: -200%;
+}
+
+.commentButton:hover {
+    color: white !important;
+}
+
+.commentButton:active {
+    transform: scale(.98);
+    filter: brightness(.8);
+}

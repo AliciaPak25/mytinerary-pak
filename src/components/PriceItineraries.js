@@ -174,8 +174,8 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
                                 style={{ width: 200 }}
                             />
                             </Typography>
-                            <CardActions>
-                                <Button onClick={newComments} size="small">Add comment</Button>
+                            <CardActions className='commentsButtons'>
+                                <Button onClick={newComments} size="small" className='commentButton'>Add comment</Button>
                             </CardActions>
                         </CardContent>)
                             :
@@ -184,11 +184,13 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
                             <TextField
                                 disabled
                                 id="outlined-disabled"
+                                label= "Log in"
                                 defaultValue="Please, log in to comment!"
+                                sx={{marginTop: 2}}
                               />
                             </Typography>
-                            <CardActions>
-                            <Button onClick={userNotLogued} size="small">You cannot comment</Button>
+                            <CardActions className='commentsButtons'>
+                            <Button onClick={userNotLogued} size="small" className='commentButton'>You cannot comment</Button>
                             </CardActions>
                             </Card> 
                     
