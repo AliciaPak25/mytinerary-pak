@@ -11,7 +11,7 @@ const sendEmail = async (email, uniqueString) => {
         secure: true,
         auth: {
             user: "verifyemailauthmindhub@gmail.com",    
-            pass: "emailVerificationMindhub2022"                           
+            pass: process.env.NODEMAILER                          
         },
         tls: {
             rejectUnauthorized: false
