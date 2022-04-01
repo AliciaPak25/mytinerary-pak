@@ -5,6 +5,7 @@ const itinerariesActions = {
         return async(dispatch, getState)=>{
         const res = await axios.get(`https://mytinerary-pak.herokuapp.com/api/itineraries/city/`+id)
         dispatch({type: 'getItineraryByCity', payload: res.data.response})
+        return res;
     }
     },
 

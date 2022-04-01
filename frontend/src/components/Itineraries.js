@@ -9,13 +9,12 @@ import PriceItinerary from "./PriceItineraries";
 function CardItinerary(props) {
     let {id} = useParams()
     const [reload, setReload] = useState(false)
-    const [itineraries, setItineraries] = useState()
+    const [itineraries, setItineraries] = useState([])
 
     useEffect(()=>{
         props.getItineraryByCity(id)
         .then(response => setItineraries(response.data.response.itineraries))
     },[reload])
-
 
     return (
     <div className="App">

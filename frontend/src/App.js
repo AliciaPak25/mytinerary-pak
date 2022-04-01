@@ -32,7 +32,7 @@ function App(props) {
         <Route path='*' element={<Home/>}/> 
         <Route path='/home' element={<Home/>}/>
         <Route path='/cities' element={<Cities/>}/>
-        <Route path='/UnderConstruction/:id' element={<CardDetails/>}/>
+        <Route path='/detail/:id' element={<CardDetails/>}/>
         {!props.user &&<Route path="/login" element={<SignIn />} />}
 				{!props.user &&<Route path="/signup" element={<SignUp />} />}
         </Routes>

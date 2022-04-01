@@ -31,7 +31,7 @@ const validator = (req, res, next) => {
     const validation = schema.validate(req.body.newUser, {abortEarly:false})
         console.log(req.body.newUser)
     if (validation.error) {
-       
+
         return res.json({success: false, from: "validator", message:validation.error.details, test: validation})
         
     }

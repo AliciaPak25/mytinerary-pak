@@ -45,7 +45,7 @@ const Cities = (props) => {
 
     {props.filteredCities.length === 0 ? (<ActionAreaCard/>) :
         props.filteredCities?.map(city=>
-            <LinkRouter to={`/UnderConstruction/${city._id}`} key={city._id}>
+            <LinkRouter to={`/detail/${city._id}`} key={city._id}>
             <div className="card bg-dark text-white divCard">
                 <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} className="card-img" alt="cardCity"/>
                 <div className="card-img-overlay divContentTextCard">
