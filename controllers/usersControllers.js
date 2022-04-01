@@ -46,11 +46,10 @@ const usersController = {
         const { uniqueString } = req.params; 
 
         const user = await UsersControl.findOne({uniqueString: uniqueString})
-        console.log(user)
         if (user) {
             user.verifiedEmail = true 
             await user.save()
-            res.redirect("http://localhost:3000/")
+            res.redirect("https://mytinerary-pak.herokuapp.com/")
         }
         else { res.json({ success: false, response: "Your email is not verified" }) }
     },
@@ -62,7 +61,7 @@ const usersController = {
             if (userExists) {
                 if (userExists.from.indexOf(from) !== -1) {
                     res.json({
-                            success: false /* true */ , 
+                            success: false, 
                             from: "form-SignUp",
                             message: "You have already registered in this way. Please, sign in."
                         })
@@ -111,6 +110,7 @@ const usersController = {
                         from: "form-SignUp",
                         message: "Congratulations! Your account has been successfully created with " +from
                     })
+                    console.log(res);
                 }else{
                     await newUser.save()
                     await sendEmail(email, newUser.uniqueString)
@@ -192,14 +192,14 @@ const usersController = {
                                 res.json({ success: false, 
                                     from: from, 
                                     message:"Your email is not verified! Please, check your inbox to complete your sign up."
-                                  }) 
+                                }) 
                             }
                         
                         }else{
                             res.json({ success: false, 
                                 from: from,  
                                 message:"The user or password does not match. Try again.",
-                              })
+                            })
                         }
 
                 } //SI NO ESTA VERIFICADO
