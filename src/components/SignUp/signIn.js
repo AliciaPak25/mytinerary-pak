@@ -15,7 +15,6 @@ import userActions from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 import GoogleSignIn from './GoogleSignIn';
 
-
 const SignIn = (props) => {
     let navigate = useNavigate()
 
@@ -66,7 +65,7 @@ const SignIn = (props) => {
             <p>Log in to your account</p>
             </div>
 
-            <form className='formLogIN' onSubmit={handleSubmit}>
+            <div className='formLogIN' onSubmit={handleSubmit}>
                 <Box
                   component="form"
                   sx={{
@@ -101,13 +100,15 @@ const SignIn = (props) => {
                     />
                 </FormControl>
                         </Box>
+                <form>
                 <button type='submit' className='buttonLogIn'> LOG IN
                   <span></span>
                 </button>
+                </form>
                 <p>or</p>
                 <GoogleSignIn/>
                 <div>Not a member yet? <LinkRouter to="/signup">Sign up now!</LinkRouter></div>
-            </form>
+            </div>
        
         </div>
     );

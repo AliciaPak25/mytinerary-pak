@@ -32,8 +32,8 @@ export default function App() {
         <SwiperSlide sx={{height: 10}} className="divResponsive" key={city.name}>
           <div className="card cardCarrousel">
             <img src={process.env.PUBLIC_URL+`/assets/${city.image}`} className="card-img-top imageCarrousel" alt="cities"/>
-            <div class="card-body cardTextCarrousel">
-              <h5 class="card-title">{city.name}</h5>
+            <div className="card-body cardTextCarrousel">
+              <h5 className="card-title">{city.name}</h5>
             </div>
           </div>
           </SwiperSlide>   

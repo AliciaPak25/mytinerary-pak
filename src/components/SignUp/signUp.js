@@ -50,7 +50,6 @@ const SignUp = (props) => {
   const classes = useStyles();
     const countries = ["Spain", "Italy", "France", "Slovenia", "Argentina", "South Korea", "United States", "United Arab Emirates"];
     let navigate = useNavigate()
-
     const [values, setValues] = React.useState({
         password: '',
         showPassword: false,
@@ -122,8 +121,8 @@ const SignUp = (props) => {
           <img src={photoForm} className={classes.media} alt='beautiful-place' width={300}
             height={170}/>
         </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs direction="column">
+        <Grid item xs={12} sm container direction="column">
+          <Grid item xs>
             <CardContent className='CardContentForm'>
               <Typography gutterBottom variant="h5" component="h2">
               Create a new account
@@ -131,7 +130,7 @@ const SignUp = (props) => {
               <Typography variant="body2" component="p">
               Want to sign up? Fill out this form!
               </Typography>
-              <form className='formContainer registerContainer' onSubmit={handleSubmit}>
+              <div className='formContainer registerContainer' onSubmit={handleSubmit}>
               <Box
       component="form"
       sx={{
@@ -185,19 +184,21 @@ const SignUp = (props) => {
             <em>None</em>
           </MenuItem>
           {countries.map(country=>
-            <MenuItem value={country}>{country}</MenuItem>
+            <MenuItem value={country} key={country}>{country}</MenuItem>
             )}
         </Select>
       </FormControl>
       </Box>
+            <form>
             <button type='submit' className='button'>
               <span className='spanSign'>Sign Up</span>
               <div className="liquid"></div>
             </button>
+            </form>
             <p>or</p>
             <GoogleSignUp/>
             <div>Already have an account? <LinkRouter to="/login">Log in here</LinkRouter></div>
-            </form>
+            </div>
             </CardContent>
           </Grid>
         </Grid>
@@ -219,16 +220,3 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
-
-/* countriesApi: state.countriesDataReducer.countriesApi,
-    filterCountriesApi: state.countriesDataReducer.filterCountriesApi, */
-
-
-/* 
-
-function EpisodeCard() {
-  
-  );
-}
-
-export default EpisodeCard; */

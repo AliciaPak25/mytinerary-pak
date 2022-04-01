@@ -1,15 +1,12 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
-
 //material ui
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { styled } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import {useDispatch} from 'react-redux';
-import userActions from '../../redux/actions/userActions';
 
 function Snack(props) {
   const dispatch = useDispatch()
@@ -60,7 +57,7 @@ function Snack(props) {
               (<p>{props.snackbar.message}</p>) :
               <ul>
                 {props.snackbar.message.map(message =>
-                  <li>{message.message}</li>
+                  <li key={message.message}>{message.message}</li>
                 )}
               </ul>
             }

@@ -24,10 +24,10 @@ const ActivitiesCards = (props) => {
     return (
         <div className="CardActivities">
             {activities.length ?activities.map(activity=>
-              <div class="card text-white cardActivity">
-              <img src={process.env.PUBLIC_URL+`/assets/activities/${activity.activityImage}`} class="card-img imageActivity" alt="activity"/>
-              <div class="card-img-overlay">
-                <h5 class="card-title nameOfActivity">{activity.activityName}</h5>
+              <div className="card text-white cardActivity">
+              <img src={process.env.PUBLIC_URL+`/assets/activities/${activity.activityImage}`} className="card-img imageActivity" alt="activity"/>
+              <div className="card-img-overlay">
+                <h5 className="card-title nameOfActivity">{activity.activityName}</h5>
               </div>
               </div>
             ): <CircularIndeterminate/>}

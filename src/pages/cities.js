@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios'
 import HeroCity from '../components/HeroCities';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import "../styles/cities.css"
 import {Link as LinkRouter} from 'react-router-dom';
 import ActionAreaCard from '../components/NoResultFound';
-import CircularIndeterminate from '../components/Loading';
 import {connect} from 'react-redux';
 import citiesAction from '../redux/actions/citiesActions';
 
 const Cities = (props) => {
-console.log(props)
+
     const [cities, setCities] = useState([]);
     const [search, setSearch]= useState();
     const [searchResults, setSearchResults] = useState("");
@@ -21,15 +19,12 @@ console.log(props)
     useEffect(()=>{
         props.fetchCities()
     },[]);
-    console.log(props.cities);
-
 
     const handleChange = (event) => {
         setSearch(event.target.value);
         props.filtering(props.cities, event.target.value);
         console.log(event.target.value)
     }
-
 
     return (
         <>

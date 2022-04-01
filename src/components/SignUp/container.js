@@ -8,7 +8,6 @@ import userActions from "../../redux/actions/userActions";
 function Container(props) {
   function SignOut() {
     props.signOutUser(props.user.email);
-    console.log("sign out");
   }
   
 

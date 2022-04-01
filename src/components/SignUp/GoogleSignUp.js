@@ -7,7 +7,6 @@ import './stylesSign.css'
 function GoogleSignUp(props) {
 
   const responseGoogle = async (res) => {
-      console.log(res)
     const userData = {
       firstName: res.profileObj.givenName + " ",
       lastName: res.profileObj.familyName,

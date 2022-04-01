@@ -10,12 +10,10 @@ import mainReducer from './redux/reducers/mainReducer';
 const reduxStore = createStore(mainReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={reduxStore}>
       <App />
     </Provider>,
-  </React.StrictMode>,
-  document.getElementById('root')
+    document.getElementById('root')
 );
 
 
