@@ -4,8 +4,7 @@ const userActions = {
 
     signUpUser: (newUser) => {
         return async (dispatch, getState) => {
-            const res = await axios.post('http://localhost:4000/api/auth/signUp', {newUser})
-            /* dispatch({type: 'message', payload: res.data}); */
+            const res = await axios.post('https://mytinerary-pak.herokuapp.com/api/auth/signUp', {newUser})
             dispatch({
                 type: 'message',
                 payload: {
@@ -18,7 +17,7 @@ const userActions = {
     },
     signInUser: (logedUser) => {
         return async (dispatch, getState) => {
-            const user = await axios.post('http://localhost:4000/api/auth/signIn', {logedUser})
+            const user = await axios.post('https://mytinerary-pak.herokuapp.com/api/auth/signIn', {logedUser})
             if(user.data.success){
                 localStorage.setItem('token', user.data.response.token)
                 dispatch({type: 'user', payload: user.data.response.userData});
@@ -36,7 +35,7 @@ const userActions = {
     },
     signOutUser: (closedUser) => {
         return async (dispatch, getState) => {
-            const user = axios.post('http://localhost:4000/api/auth/signOut', {closedUser})
+            const user = axios.post('https://mytinerary-pak.herokuapp.com/api/auth/signOut', {closedUser})
             localStorage.removeItem('token')
             dispatch({type: 'user', payload: null});
         }
@@ -45,7 +44,7 @@ const userActions = {
     verifyToken: (token) => {
 
         return async (dispatch, getState) => {
-            const user = await axios.get('http://localhost:4000/api/auth/signInToken', {
+            const user = await axios.get('https://mytinerary-pak.herokuapp.com/api/auth/signInToken', {
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }

@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, cardActionAreaClasses } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useParams} from 'react-router-dom'
@@ -15,18 +13,11 @@ import CardItinerary from '../components/Itineraries';
 
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import citiesAction from '../redux/actions/citiesActions';
-import Likes from '../components/Likes';
-import ActivitiesCards from '../components/Activities';
 import NoItineraries from '../components/NoItineraries';
 
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 function ActionAreaCard(props) {
     const theme = useTheme();

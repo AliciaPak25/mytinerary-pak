@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useParams} from 'react-router-dom';
 import commentsActions from '../redux/actions/commentsActions';
-import userActions from '../redux/actions/userActions';
 import {connect} from 'react-redux';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,7 +9,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import itinerariesActions from '../redux/actions/itinerariesActions';
-import swal from 'sweetalert';
 import '../styles/stylesComments.css'
 
 const Comments = (props) => {
@@ -68,7 +65,7 @@ const Comments = (props) => {
                               placeholder="Comment"
                               defaultValue={comment.comment}
                               onChange={(event) => setModify(event.target.value)}
-                              style={{ width: 200 }}
+                              style={{ width: 300, wordBreak: 'break-all' }}
                               />
                             }
                             </div>
@@ -104,5 +101,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
-
-//word-break: break-all;

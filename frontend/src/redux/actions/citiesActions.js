@@ -3,14 +3,14 @@ import axios from "axios";
 const citiesAction = {
     fetchCities: () => {
         return async(dispatch, getState)=>{ 
-            const res = await axios.get('http://localhost:4000/api/cities')
+            const res = await axios.get('https://mytinerary-pak.herokuapp.com/api/cities')
             dispatch({type: 'fetch', payload: res.data.response.cities})
     }
     },
 
     fetchOneCity: (id)=>{
         return async (dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/cities/'+id)
+            const res = await axios.get('https://mytinerary-pak.herokuapp.com/api/cities/'+id)
             dispatch({type: 'fetchOneCity', payload: res.data.response})
         }
     },
@@ -24,7 +24,7 @@ const citiesAction = {
     deleteOneCity: (id) =>{
         return async(dispatch, getState) => {
             try{
-                const res = await axios.delete('http://localhost:4000/api/cities/'+id)
+                const res = await axios.delete('https://mytinerary-pak.herokuapp.com/api/cities/'+id)
                 dispatch({type:'delete', payload: res.data.response})
             }catch(err){
                 console.log(err)
@@ -39,7 +39,7 @@ const citiesAction = {
     },
     addCity: (name,country)=>{
         return async(dispatch,getState)=>{
-            const res= await axios.post('http://localhost:4000/api/cities',{name,country})
+            const res= await axios.post('https://mytinerary-pak.herokuapp.com/api/cities',{name,country})
             dispatch({type:'addCity', payload: res.data.response})
 
         }

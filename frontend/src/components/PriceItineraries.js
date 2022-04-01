@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
 import PaidIcon from '@mui/icons-material/Paid';
-import { PriceChange } from '@mui/icons-material';
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import Likes from './Likes';
 import ActivitiesCards from '../components/Activities';
 import {connect} from 'react-redux';
 import activitiesActions from '../redux/actions/activitiesActions';
-import itinerariesActions from '../redux/actions/itinerariesActions';
 import commentsActions from '../redux/actions/commentsActions';
 import Comments from './Comments';
 import Card from '@mui/material/Card';
@@ -170,7 +167,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
                                 placeholder="Write a comment"
                                 onChange={(event) => setInputText(event.target.value)}
                                 value={inputText}
-                                style={{ width: 200 }}
+                                style={{ width: 300, wordBreak: 'break-all' }}
                             />
                             </Typography>
                             <CardActions className='commentsButtons'>
