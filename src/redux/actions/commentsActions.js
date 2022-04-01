@@ -29,7 +29,7 @@ const commentsActions = {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            console.log(res);
+            
             dispatch({
                 type: 'message',
                 payload: {
@@ -51,7 +51,6 @@ const commentsActions = {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            console.log(res)
             dispatch({
                 type: 'message',
                 payload: {

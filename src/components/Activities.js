@@ -19,12 +19,11 @@ const ActivitiesCards = (props) => {
     useEffect(()=>{
         props.activityPerItinerary(props.id).then(res=>setActivities(res.response))
     },[])
-    console.log(props.id)
 
     return (
         <div className="CardActivities">
             {activities.length ?activities.map(activity=>
-              <div className="card text-white cardActivity">
+              <div className="card text-white cardActivity" key={activity._id}>
               <img src={process.env.PUBLIC_URL+`/assets/activities/${activity.activityImage}`} className="card-img imageActivity" alt="activity"/>
               <div className="card-img-overlay">
                 <h5 className="card-title nameOfActivity">{activity.activityName}</h5>

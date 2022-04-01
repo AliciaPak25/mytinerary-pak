@@ -54,7 +54,7 @@ const Comments = (props) => {
                             <Typography variant="h5" component="div">
                                 {comment.userId.firstName+ " " +comment.userId.lastName}
                             </Typography>
-                            <Typography variant="body2">
+                            <div variant="body2">
                             {!editing ? 
                             (
                             <Typography variant="body2">
@@ -71,7 +71,7 @@ const Comments = (props) => {
                               style={{ width: 200 }}
                               />
                             }
-                            </Typography>
+                            </div>
                         </CardContent>
                         <CardActions className='commentsButtons'>
                             <Button id={comment._id} onClick={modifyingComment} size="small" className='commentButton'>{!editing ? ("Edit") : "Confirm"}</Button>

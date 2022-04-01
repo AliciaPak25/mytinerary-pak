@@ -29,7 +29,7 @@ function CardItinerary(props) {
 
     return (
     <div className="App">
-        {props.itineraries?.map(itinerary=> <PriceItinerary setReload={setReload} reload={reload} itinerary={itinerary} itineraries={itineraries} setItineraries={setItineraries}/>)}
+        {props.itineraries?.map(itinerary=> <PriceItinerary setReload={setReload} reload={reload} itinerary={itinerary} itineraries={itineraries} setItineraries={setItineraries} key={itinerary._id}/>)}
         
     </div>
     );

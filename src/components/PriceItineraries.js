@@ -62,7 +62,6 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
     }
 
     function deletingComment(event) {
-      console.log(event.target.id);
       swal({
         title: "Are you sure you want to delete this comment?",
         text: "Once deleted, this action can't be undone!",
@@ -130,7 +129,7 @@ const PriceItinerary = ({itinerary, reload, setReload, addComment, modifyComment
               ></box-icon>
             </div>
             <div className="body__button">
-                <div className='d-flex'>{price.map(pay=> <PaidIcon className='text-success'/>)}</div>
+                <div className='d-flex'>{price.map(pay=> <PaidIcon className='text-success' key={pay}/>)}</div>
               <box-icon
                 color="green"
                 name="share-alt"

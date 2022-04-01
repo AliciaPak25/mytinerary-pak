@@ -22,7 +22,6 @@ const itineraryController = {
         try {
             
             const itinerariesOneCity = await ItineraryControl.find({city:req.params.id}).populate('comments.userId')
-            console.log(req.params.id)
             res.json({response: itinerariesOneCity, success:true})
 
         } catch (error) {
